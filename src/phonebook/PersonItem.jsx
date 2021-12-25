@@ -14,7 +14,7 @@ const PersonItem = (props) => {
             </div>
 
             <div className={"person__dell"}>
-                <Button>Удалить</Button>
+                <Button>❌</Button>
             </div>
         </div>
     );

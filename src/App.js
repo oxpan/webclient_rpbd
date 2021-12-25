@@ -12,12 +12,30 @@ function App() {
         {title:'DDDDDDDDD', body:'fdfdfd',id:3},
         {title:'AAAAAAAAA', body:'fdfdfd',id:4},
     ])
+    
+    const addPerson = () => {
+      
+    }
 
 
   return (
     <div className="App">
-      {/*<test/>*/}
-        <PersonList persone={persone} title={"Список постов"}/>
+        <Input
+            type={"text"}
+            placeholder={"Фио:"}
+        />
+        <Input
+            type={"text"}
+            placeholder={"Address:"}
+        />
+        <Input
+            type={"text"}
+            placeholder={"Number:"}
+        />
+        <Button>добавить</Button>
+
+        <Button>поиск</Button>
+        <PersonList persone={persone} title={"Список персон"}/>
 
     </div>
   );
