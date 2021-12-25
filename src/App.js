@@ -5,6 +5,7 @@ import PersonItem from "./phonebook/PersonItem";
 import "./styles/App.css"
 import PersonList from "./phonebook/PersonList";
 import PhoneBookForm from "./phonebook/PhoneBookForm";
+import Select from "./phonebook/UI/select/Select";
 
 function App() {
     const [persone,setPerson] = useState([
@@ -25,8 +26,37 @@ function App() {
     <div className="App">
 
         <PhoneBookForm create={createPerson}/>
-        <Button>🔎</Button>
-        <PersonList remove={removePerson} persone={persone} title={"Список персон"}/>
+
+
+        <div>
+            <Select
+                defaultValue={"поиск"}
+                options={[
+                    {value:'title',name:"по 4 цифрам"},
+                    {value:'title',name:"по ФИО"},
+                    {value:'title',name:"по всем атрибутам"}
+                ]}
+            />
+
+            <select name="" id="">
+                <option value="value1">поиск по 4 цифрам</option>
+                <option value="value1">поиск по ФИО</option>
+                <option value="value1">поиск по всем атрибутам</option>
+            </select>
+            <Button>🔎</Button>
+        </div>
+
+
+        {persone.length
+            ?
+            <PersonList remove={removePerson} persone={persone} title={"Список персон"}/>
+            :
+            <h1 style={{textAlign:'center'}}>
+                Персон не существует!
+            </h1>
+        }
+
+
 
     </div>
   );
