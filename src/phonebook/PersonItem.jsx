@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PhoneBookForms = () => {
+const PersonItem = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const PhoneBookForms = () => {
     );
 };
 
-export default PhoneBookForms;
+export default PersonItem;

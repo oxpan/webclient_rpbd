@@ -8,17 +8,25 @@ function App() {
       {/*<test/>*/}
         <Input
             type={"text"}
-            placeholder={"post"}
+            placeholder={"Фио:"}
         />
         <Input
             type={"text"}
-            placeholder={"post"}
+            placeholder={"Address:"}
         />
         <Input
             type={"text"}
-            placeholder={"post"}
+            placeholder={"Number:"}
         />
-        <Button>AAAAAA</Button>
+        <Button>добавить</Button>
+
+
+
+
+
+        <Button>поиск</Button>
+
+
     </div>
   );
 }
