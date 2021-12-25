@@ -7,14 +7,14 @@ const PersonItem = (props) => {
     return (
         <div className={"person"}>
             <div className={"person_content"}>
-                <strong>{props.person.id}. {props.person.title}</strong>
+                <strong>{props.number}. {props.person.title}</strong>
                 <div>
                     {props.person.body}
                 </div>
             </div>
 
             <div className={"person__dell"}>
-                <Button>❌</Button>
+                <Button onClick={()=>props.remove(props.person)}>❌</Button>
             </div>
         </div>
     );
