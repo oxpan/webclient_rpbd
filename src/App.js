@@ -6,6 +6,7 @@ import "./styles/App.css"
 import PersonList from "./phonebook/PersonList";
 import PhoneBookForm from "./phonebook/PhoneBookForm";
 import Select from "./phonebook/UI/select/Select";
+import PersonFilter from "./phonebook/PersonFilter";
 
 function App() {
     const [persone,setPerson] = useState([
@@ -14,6 +15,11 @@ function App() {
         {title:'DDDDDDDDD', body:'fdfdfd',id:3},
         {title:'AAAAAAAAA', body:'fdfdfd',id:4},
     ])
+
+    // const [selectedFind,setSelectedFind] = useState('')
+    // const [searchQuery, setSearchQuery] = useState('')
+
+    const [filter,setFilter] = useState({find:'',querty:''})
 
     const createPerson = (newPerson) => {
       setPerson([...persone,newPerson])
@@ -28,23 +34,7 @@ function App() {
         <PhoneBookForm create={createPerson}/>
 
 
-        <div>
-            <Select
-                defaultValue={"поиск"}
-                options={[
-                    {value:'title',name:"по 4 цифрам"},
-                    {value:'title',name:"по ФИО"},
-                    {value:'title',name:"по всем атрибутам"}
-                ]}
-            />
-
-            <select name="" id="">
-                <option value="value1">поиск по 4 цифрам</option>
-                <option value="value1">поиск по ФИО</option>
-                <option value="value1">поиск по всем атрибутам</option>
-            </select>
-            <Button>🔎</Button>
-        </div>
+        <PersonFilter filter={filter} setFilter={setFilter}/>
 
 
         {persone.length
