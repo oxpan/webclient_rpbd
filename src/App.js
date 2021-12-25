@@ -17,8 +17,6 @@ function App() {
         {title:'AAAAAAAAA', body:'fdfdfd',id:4},
     ])
 
-    // const [selectedFind,setSelectedFind] = useState('')
-    // const [searchQuery, setSearchQuery] = useState('')
 
     const [filter,setFilter] = useState({find:'',querty:''})
     const [modal,setModal] = useState(false)
@@ -50,8 +48,6 @@ function App() {
 
 
         <PersonList remove={removePerson} persone={persone} title={"Список персон"}/>
-
-
 
 
     </div>

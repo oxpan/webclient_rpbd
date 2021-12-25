@@ -1,5 +1,6 @@
 import React from 'react';
 import PersonItem from "./PersonItem";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 const PersonList = ({persone,title,remove}) => {
     if (!persone.length){
@@ -13,9 +14,18 @@ const PersonList = ({persone,title,remove}) => {
     return (
         <div>
             <h1 style={{textAlign:'center'}}>{title}</h1>
-            {persone.map((person,index)=>
-                <PersonItem remove={remove} number={index + 1} person={person} key={person.id}/>
-            )}
+            <TransitionGroup>
+                {persone.map((person,index)=>
+                    <CSSTransition
+                        key={person.id}
+                        timeout={500}
+                        className={"person"}
+                        >
+                    <PersonItem remove={remove} number={index + 1} person={person}/>
+                    </CSSTransition>
+                )}
+            </TransitionGroup>
+
         </div>
     );
 };

@@ -24,6 +24,21 @@
     align-items: center;
 }
 
-.post__btns {
+.person__btns {
     display: flex;
+}
+
+.pers-enter {
+    transform: translateX(-350px);
+}
+.pers-enter-active {
+    transform: translateX(0px);
+    transition: all 500ms ease-in;
+}
+.pers-exit {
+    opacity: 1;
+}
+.pers-exit-active {
+    transform: translateX(-350px);
+    transition: all 500ms ease-in;
 }
