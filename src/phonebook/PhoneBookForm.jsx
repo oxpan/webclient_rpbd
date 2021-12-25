@@ -41,7 +41,7 @@ const PhoneBookForm = ({create}) => {
                 {/*    type={"text"}*/}
                 {/*    placeholder={"Number:"}*/}
                 {/*/>*/}
-                <Button onClick={addPerson}>➕</Button>
+                <Button onClick={addPerson}>Создать персону</Button>
             </form>
 
     );

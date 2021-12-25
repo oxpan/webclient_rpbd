@@ -2,6 +2,14 @@ import React from 'react';
 import PersonItem from "./PersonItem";
 
 const PersonList = ({persone,title,remove}) => {
+    if (!persone.length){
+        return (
+            <h1 style={{textAlign:'center'}}>
+                Персон не существует!
+            </h1>
+        )
+    }
+
     return (
         <div>
             <h1 style={{textAlign:'center'}}>{title}</h1>

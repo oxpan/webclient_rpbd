@@ -7,6 +7,7 @@ import PersonList from "./phonebook/PersonList";
 import PhoneBookForm from "./phonebook/PhoneBookForm";
 import Select from "./phonebook/UI/select/Select";
 import PersonFilter from "./phonebook/PersonFilter";
+import Modal from "./phonebook/UI/Modal/Modal";
 
 function App() {
     const [persone,setPerson] = useState([
@@ -20,9 +21,11 @@ function App() {
     // const [searchQuery, setSearchQuery] = useState('')
 
     const [filter,setFilter] = useState({find:'',querty:''})
+    const [modal,setModal] = useState(false)
 
     const createPerson = (newPerson) => {
       setPerson([...persone,newPerson])
+        setModal(false)
     }
     const removePerson = (person) => {
         setPerson(persone.filter(p=>p.id !== person.id))
@@ -31,20 +34,23 @@ function App() {
   return (
     <div className="App">
 
-        <PhoneBookForm create={createPerson}/>
 
+        <hr style={{margin:'15px 0'}}/>
+        <label >Создание нового  </label>
+        <Button style={{marginTop: 30}} onClick={()=>setModal(true)}>
+            ➕
+        </Button>
+
+        <Modal style={{marginTop: 30}} visible={modal} setVisible={setModal}>
+            <PhoneBookForm create={createPerson}/>
+        </Modal>
 
         <PersonFilter filter={filter} setFilter={setFilter}/>
 
 
-        {persone.length
-            ?
-            <PersonList remove={removePerson} persone={persone} title={"Список персон"}/>
-            :
-            <h1 style={{textAlign:'center'}}>
-                Персон не существует!
-            </h1>
-        }
+
+        <PersonList remove={removePerson} persone={persone} title={"Список персон"}/>
+
 
 
 
