@@ -7,6 +7,7 @@ import Loader from "../phonebook/UI/Loader/Loader";
 import PersonList from "../phonebook/PersonList";
 import PhoneBookForm from "../phonebook/PhoneBookForm";
 import PersonSevice from "../API/PersonSevice";
+import FindForm from "../phonebook/FindForm";
 
 function Persons() {
     const [persone,setPerson] = useState([
@@ -23,7 +24,7 @@ function Persons() {
     const [modal,setModal] = useState(false);
     const [fetchPerson,isPersonLoading,personError] = useFetching(async ()=>{
         const lperson = await PersonSevice.getAll();
-        setPerson(lperson);
+        // setPerson(lperson);
     })
 
     const createPerson = (newPerson) => {
@@ -46,7 +47,6 @@ function Persons() {
 
     const findPerson = (pers) => {
         console.log(pers);
-
     }
 
     return (
@@ -68,6 +68,7 @@ function Persons() {
 
             <Modal style={{marginTop: 30}} visible={modalFind} setVisible={setModalFind}>
                 <div>{filter}</div>
+                <FindForm finds={findPerson} props={filter}/>
             </Modal>
 
 
