@@ -11,6 +11,7 @@ import Modal from "./phonebook/UI/Modal/Modal";
 import axios from "axios";
 import PersonSevice from "./API/PersonSevice";
 import Loader from "./phonebook/UI/Loader/Loader";
+import {useFetching} from "./hooks/useFetching";
 
 function App() {
     const [persone,setPerson] = useState([
@@ -23,7 +24,11 @@ function App() {
 
     const [filter,setFilter] = useState({find:'',querty:''});
     const [modal,setModal] = useState(false);
-    const [isPersonLoading,setPersonLoading] = useState(false);
+    // const [isPersonLoading,setPersonLoading] = useState(false);
+    const [fetchPerson,isPersonLoading,personError] = useFetching(async ()=>{
+        const lperson = await PersonSevice.getAll();
+        setPerson(lperson);
+    })
 
     const createPerson = (newPerson) => {
       setPerson([...persone,newPerson])
@@ -34,18 +39,6 @@ function App() {
         console.log("AAAA");
         fetchPerson();
     },[])
-
-    async function fetchPerson(){
-        setPersonLoading(true);
-        setTimeout(async ()=>{
-            const lperson = await PersonSevice.getAll();
-            // console.log(response);
-            setPerson(lperson);
-            setPersonLoading(false);
-        },1000)
-
-
-    }
 
 
     const removePerson = (person) => {
@@ -68,7 +61,9 @@ function App() {
 
         <PersonFilter filter={filter} setFilter={setFilter}/>
 
-
+        {personError &&
+            <h1>Ошибка!!! {personError}</h1>
+        }
         {isPersonLoading
             ? <div style={{display:'flex',justifyContent:'center',marginTop:50}}><Loader/></div>
             :<PersonList remove={removePerson} persone={persone} title={"Список персон"}/>
