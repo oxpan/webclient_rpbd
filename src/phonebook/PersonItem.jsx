@@ -13,9 +13,9 @@ const PersonItem = (props) => {
     return (
         <div className={"person"}>
             <div className={"person_content"}>
-                <strong>{props.number}. {props.person.title}</strong>
+                <strong>{props.number}. {props.person.lastname} {props.person.firstname} {props.person.fathername}</strong>
                 <div>
-                    {props.person.body}
+                    {/*{props.person.body}*/}
                 </div>
             </div>
 

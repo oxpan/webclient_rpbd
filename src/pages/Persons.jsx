@@ -10,6 +10,7 @@ import PersonSevice from "../API/PersonSevice";
 
 function Persons() {
     const [persone,setPerson] = useState([
+        {lastname:'Zayakin', firstname:'Igor', fathername:'Ivanovich',id:Date.now()}
         // {title:'FFFFFFFFF', body:'fdfdfd',id:1},
         // {title:'GGGGGGGGG', body:'fdfdfd',id:2},
         // {title:'DDDDDDDDD', body:'fdfdfd',id:3},
@@ -25,9 +26,12 @@ function Persons() {
     })
 
     const createPerson = (newPerson) => {
+        // console.log(newPerson);
         setPerson([...persone,newPerson])
         setModal(false)
     }
+
+
 
     useEffect(()=>{
         console.log("AAAA");
