@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Button from "./phonebook/UI/button/Button";
 import Input from "./phonebook/UI/input/Input";
 import PersonItem from "./phonebook/PersonItem";
@@ -8,23 +8,45 @@ import PhoneBookForm from "./phonebook/PhoneBookForm";
 import Select from "./phonebook/UI/select/Select";
 import PersonFilter from "./phonebook/PersonFilter";
 import Modal from "./phonebook/UI/Modal/Modal";
+import axios from "axios";
+import PersonSevice from "./API/PersonSevice";
 
 function App() {
     const [persone,setPerson] = useState([
-        {title:'FFFFFFFFF', body:'fdfdfd',id:1},
-        {title:'GGGGGGGGG', body:'fdfdfd',id:2},
-        {title:'DDDDDDDDD', body:'fdfdfd',id:3},
-        {title:'AAAAAAAAA', body:'fdfdfd',id:4},
+        // {title:'FFFFFFFFF', body:'fdfdfd',id:1},
+        // {title:'GGGGGGGGG', body:'fdfdfd',id:2},
+        // {title:'DDDDDDDDD', body:'fdfdfd',id:3},
+        // {title:'AAAAAAAAA', body:'fdfdfd',id:4},
     ])
 
 
-    const [filter,setFilter] = useState({find:'',querty:''})
-    const [modal,setModal] = useState(false)
+    const [filter,setFilter] = useState({find:'',querty:''});
+    const [modal,setModal] = useState(false);
+    const [isPersonLoading,setPersonLoading] = useState(false);
 
     const createPerson = (newPerson) => {
       setPerson([...persone,newPerson])
         setModal(false)
     }
+
+    useEffect(()=>{
+        console.log("AAAA");
+        fetchPerson();
+    },[])
+
+    async function fetchPerson(){
+        setPersonLoading(true);
+        setTimeout(async ()=>{
+            const lperson = await PersonSevice.getAll();
+            // console.log(response);
+            setPerson(lperson);
+            setPersonLoading(false);
+        },1000)
+
+
+    }
+
+
     const removePerson = (person) => {
         setPerson(persone.filter(p=>p.id !== person.id))
     }
@@ -46,8 +68,11 @@ function App() {
         <PersonFilter filter={filter} setFilter={setFilter}/>
 
 
+        {isPersonLoading
+            ?<h1>загрузка...</h1>
+            :<PersonList remove={removePerson} persone={persone} title={"Список персон"}/>
+        }
 
-        <PersonList remove={removePerson} persone={persone} title={"Список персон"}/>
 
 
     </div>
