@@ -21,6 +21,9 @@ const PersonPage = () => {
         <div>
 
             <h1>Не жопа #{params.id}</h1>
+            {error &&
+                <div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>⛈</h1></div>
+            }
             {isLoading
                 ? <Loader/>
                 : <div>
@@ -29,9 +32,6 @@ const PersonPage = () => {
             </div>
             }
 
-            {/*<div>{pers.id}. {pers.title}</div>*/}
-
-            {/*<div>{pers.body}</div>*/}
         </div>
     );
 };

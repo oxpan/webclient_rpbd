@@ -6,7 +6,7 @@ const PersonItem = (props) => {
     const router = useNavigate();
     // console.log(router);
     function handleClick(){
-        router(`/aaaa/${props.person.id}`);
+        router(`/link/${props.person.id}`);
 
     }
 

@@ -9,8 +9,8 @@ const AppRouter = () => {
     return (
         <Routes>
             <Route path={"/"} element={<Persons/>}/>
-            <Route exact path={"aaaa"} element={<About/>}/>
-            <Route exact path={"aaaa/:id"} element={<PersonPage/>}/>
+            <Route exact path={"link"} element={<About/>}/>
+            <Route exact path={"link/:id"} element={<PersonPage/>}/>
             <Route path={"*"} element={<Error/>}/>
         </Routes>
     );
