@@ -19,6 +19,7 @@ function Persons() {
 
 
     const [filter,setFilter] = useState('');
+    const [modalFind,setModalFind] = useState(false);
     const [modal,setModal] = useState(false);
     const [fetchPerson,isPersonLoading,personError] = useFetching(async ()=>{
         const lperson = await PersonSevice.getAll();
@@ -62,13 +63,18 @@ function Persons() {
 
             <div>
                 <PersonFilter filter={filter} setFilter={setFilter}/>
-                <Button onClick={()=>console.log(filter)}>🔎</Button>
+                <Button onClick={()=>setModalFind(true)}>🔎</Button>
             </div>
+
+            <Modal style={{marginTop: 30}} visible={modalFind} setVisible={setModalFind}>
+                <div>{filter}</div>
+            </Modal>
 
 
             <hr style={{margin:'15px 0'}}/>
-            {personError &&
-                <div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>🚫</h1></div>
+            {personError
+                ?<div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>🚫</h1></div>
+                :<div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>✔</h1></div>
                 // <h1>Ошибка!!! {personError} у вас нет соединения с сервером</h1>
             }
             <hr style={{margin:'15px 0'}}/>
