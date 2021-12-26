@@ -10,6 +10,13 @@ const PersonItem = (props) => {
         router(`/link/${props.person.id}`);
     }
 
+    function onOnClick(){
+        if (isShow)
+            setShow(false);
+        else
+            setShow(true);
+    }
+
     return (
         <div className={"person"}>
             <div className={"person_content"}>
@@ -17,14 +24,24 @@ const PersonItem = (props) => {
                 {
                     isShow &&
                     <div>
-                        🕛
+                        <div>
+                            Улица {props.person.street}
+                        </div>
+                        <div>
+                            Дом №{props.person.home}
+                        </div>
+                        <div>
+                            Квартира №{props.person.apartment}
+                        </div>
+
                     </div>
+
                 }
 
             </div>
 
             <div className={"person__btns"}>
-                <Button>🔷</Button>
+                {/*<Button onClick={onOnClick}>🔷</Button>*/}
 
                 <Button onClick={handleClick}> _↗_ </Button>
 

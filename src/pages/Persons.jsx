@@ -11,7 +11,7 @@ import FindForm from "../phonebook/FindForm";
 
 function Persons() {
     const [persone,setPerson] = useState([
-        {lastname:'Zayakin', firstname:'Igor', fathername:'Ivanovich',id:Date.now()}
+        {lastname:'Zayakin', firstname:'Igor', fathername:'Ivanovich',id:Date.now(),home:23,apartment:228,street:"Nemirovicha"}
     ])
 
 
