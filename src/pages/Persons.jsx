@@ -67,7 +67,7 @@ function Persons() {
             </div>
 
             <Modal style={{marginTop: 30}} visible={modalFind} setVisible={setModalFind}>
-                <div>{filter}</div>
+                {/*<div>{filter}</div>*/}
                 <FindForm finds={findPerson} props={filter}/>
             </Modal>
 

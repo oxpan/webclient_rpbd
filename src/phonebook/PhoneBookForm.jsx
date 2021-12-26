@@ -57,6 +57,7 @@ const PhoneBookForm = ({create}) => {
                             value={pers.fathername}
                             onChange={e=>setPers({...pers,fathername: e.target.value})}
                         />
+                        <hr style={{margin:'15px 0'}}/>
                         <Button onClick={addPerson}>Создать персону</Button>
                     </div>
                 }
