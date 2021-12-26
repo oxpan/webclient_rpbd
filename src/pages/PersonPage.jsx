@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import {useFetching} from "../hooks/useFetching";
 import PersonSevice from "../API/PersonSevice";
 import Loader from "../phonebook/UI/Loader/Loader";
+import Button from "../phonebook/UI/button/Button";
 
 const PersonPage = () => {
     const params = useParams();
@@ -10,8 +11,18 @@ const PersonPage = () => {
 
     const [pers,setPers] = useState({});
     const [fetchPersonById,isLoading,error] = useFetching(async (id) => {
-        const response = await PersonSevice.getByID(id);
-        setPers(response.data);
+        // const response = await PersonSevice.getByID(id);
+        const persone = {
+            lastname:'Zayakin',
+            firstname:'Igor',
+            fathername:'Ivanovich',
+            id:Date.now(),
+            home:23,
+            apartment:228,
+            street:"Nemirovicha"
+        }
+        // setPers(response.data);
+        setPers(persone);
     })
 
     useEffect(()=>{
@@ -27,8 +38,13 @@ const PersonPage = () => {
             {isLoading
                 ? <Loader/>
                 : <div>
-                    <div>{pers.id}. {pers.title}</div>
-                    <div> {pers.body} </div>
+                    <div> {pers.lastname} {pers.firstname} {pers.fathername}</div>
+                    <div> {pers.street}  {pers.home} {pers.apartment}</div>
+
+                    <Button>💾</Button>
+                    <Button>🗑</Button>
+
+
             </div>
             }
 
