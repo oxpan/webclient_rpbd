@@ -10,6 +10,7 @@ import PersonFilter from "./phonebook/PersonFilter";
 import Modal from "./phonebook/UI/Modal/Modal";
 import axios from "axios";
 import PersonSevice from "./API/PersonSevice";
+import Loader from "./phonebook/UI/Loader/Loader";
 
 function App() {
     const [persone,setPerson] = useState([
@@ -69,7 +70,7 @@ function App() {
 
 
         {isPersonLoading
-            ?<h1>загрузка...</h1>
+            ? <div style={{display:'flex',justifyContent:'center',marginTop:50}}><Loader/></div>
             :<PersonList remove={removePerson} persone={persone} title={"Список персон"}/>
         }
 
