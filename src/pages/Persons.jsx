@@ -18,7 +18,7 @@ function Persons() {
     ])
 
 
-    const [filter,setFilter] = useState({find:'',querty:''});
+    const [filter,setFilter] = useState('');
     const [modal,setModal] = useState(false);
     const [fetchPerson,isPersonLoading,personError] = useFetching(async ()=>{
         const lperson = await PersonSevice.getAll();
@@ -43,11 +43,14 @@ function Persons() {
         setPerson(persone.filter(p=>p.id !== person.id))
     }
 
+    const findPerson = (pers) => {
+        console.log(pers);
+
+    }
+
     return (
         <div className="App">
 
-
-            <hr style={{margin:'15px 0'}}/>
             <label >Создание нового  </label>
             <Button style={{marginTop: 30}} onClick={()=>setModal(true)}>
                 ➕
@@ -57,12 +60,18 @@ function Persons() {
                 <PhoneBookForm create={createPerson}/>
             </Modal>
 
-            <PersonFilter filter={filter} setFilter={setFilter}/>
+            <div>
+                <PersonFilter filter={filter} setFilter={setFilter}/>
+                <Button onClick={()=>console.log(filter)}>🔎</Button>
+            </div>
 
+
+            <hr style={{margin:'15px 0'}}/>
             {personError &&
                 <div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>🚫</h1></div>
                 // <h1>Ошибка!!! {personError} у вас нет соединения с сервером</h1>
             }
+            <hr style={{margin:'15px 0'}}/>
             {isPersonLoading
                 ? <div style={{display:'flex',justifyContent:'center',marginTop:50}}><Loader/></div>
                 :<PersonList remove={removePerson} persone={persone} title={"Список персон"}/>

@@ -4,10 +4,10 @@ import Button from "./UI/button/Button";
 
 const PersonFilter = ({filter,setFilter}) => {
     return (
-        <div>
+        <span>
             <Select
-                value={filter.find}
-                // onChange={findPerson}
+                value={filter}
+                onChange={fill => setFilter(fill) }
                 defaultValue={"поиск"}
                 options={[
                     {value:'Find4',name:"по 4 цифрам"},
@@ -16,8 +16,8 @@ const PersonFilter = ({filter,setFilter}) => {
                 ]}
             />
 
-            <Button>🔎</Button>
-        </div>
+            {/*<Button>🔎</Button>*/}
+        </span>
     );
 };
 
