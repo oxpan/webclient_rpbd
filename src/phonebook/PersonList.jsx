@@ -20,8 +20,8 @@ const PersonList = ({persone,title,remove}) => {
                         key={person.id}
                         timeout={500}
                         className={"person"}
-                        >
-                    <PersonItem remove={remove} number={index + 1} person={person}/>
+                    >
+                        <PersonItem remove={remove} number={index + 1} person={person}/>
                     </CSSTransition>
                 )}
             </TransitionGroup>

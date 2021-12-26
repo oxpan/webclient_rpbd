@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
-import Modal from "./UI/Modal/Modal";
 import Loader from "./UI/Loader/Loader";
 
 
@@ -45,42 +44,26 @@ const PhoneBookForm = ({create}) => {
                             value={pers.lastname}
                             onChange={e=>setPers({...pers,lastname: e.target.value})}
                         />
+
                         <Input
                             value={pers.firstname}
                             onChange={e=>setPers({...pers,firstname:e.target.value})}
                             type={"text"}
                             placeholder={"Имя:"}
                         />
+
                         <Input
                             type={"text"}
                             placeholder={"Отчество:"}
                             value={pers.fathername}
                             onChange={e=>setPers({...pers,fathername: e.target.value})}
                         />
+
                         <hr style={{margin:'15px 0'}}/>
+
                         <Button onClick={addPerson}>Создать персону</Button>
                     </div>
                 }
-                {/*<Input*/}
-                {/*    type={"text"}*/}
-                {/*    placeholder={"Фамилия:"}*/}
-                {/*    value={pers.lastname}*/}
-                {/*    onChange={e=>setPers({...pers,lastname: e.target.value})}*/}
-                {/*/>*/}
-                {/*<Input*/}
-                {/*    value={pers.firstname}*/}
-                {/*    onChange={e=>setPers({...pers,firstname:e.target.value})}*/}
-                {/*    type={"text"}*/}
-                {/*    placeholder={"Имя:"}*/}
-                {/*/>*/}
-                {/*<Input*/}
-                {/*    type={"text"}*/}
-                {/*    placeholder={"Отчество:"}*/}
-                {/*    value={pers.fathername}*/}
-                {/*    onChange={e=>setPers({...pers,fathername: e.target.value})}*/}
-                {/*/>*/}
-                {/*<Button onClick={addPerson}>Создать персону</Button>*/}
-
             </form>
 
     );

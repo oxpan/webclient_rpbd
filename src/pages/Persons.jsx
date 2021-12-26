@@ -12,10 +12,6 @@ import FindForm from "../phonebook/FindForm";
 function Persons() {
     const [persone,setPerson] = useState([
         {lastname:'Zayakin', firstname:'Igor', fathername:'Ivanovich',id:Date.now()}
-        // {title:'FFFFFFFFF', body:'fdfdfd',id:1},
-        // {title:'GGGGGGGGG', body:'fdfdfd',id:2},
-        // {title:'DDDDDDDDD', body:'fdfdfd',id:3},
-        // {title:'AAAAAAAAA', body:'fdfdfd',id:4},
     ])
 
 
@@ -24,22 +20,18 @@ function Persons() {
     const [modal,setModal] = useState(false);
     const [fetchPerson,isPersonLoading,personError] = useFetching(async ()=>{
         const lperson = await PersonSevice.getAll();
-        // setPerson(lperson);
+        // setPerson(lperson); загрузка
     })
 
     const createPerson = (newPerson) => {
-        // console.log(newPerson);
         setPerson([...persone,newPerson])
         setModal(false)
     }
-
-
 
     useEffect(()=>{
         console.log("AAAA");
         fetchPerson();
     },[])
-
 
     const removePerson = (person) => {
         setPerson(persone.filter(p=>p.id !== person.id))
@@ -71,14 +63,16 @@ function Persons() {
                 <FindForm finds={findPerson} props={filter}/>
             </Modal>
 
-
             <hr style={{margin:'15px 0'}}/>
+
             {personError
                 ?<div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>🚫</h1></div>
                 :<div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>✔</h1></div>
                 // <h1>Ошибка!!! {personError} у вас нет соединения с сервером</h1>
             }
+
             <hr style={{margin:'15px 0'}}/>
+
             {isPersonLoading
                 ? <div style={{display:'flex',justifyContent:'center',marginTop:50}}><Loader/></div>
                 :<PersonList remove={removePerson} persone={persone} title={"Список персон"}/>

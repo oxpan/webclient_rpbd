@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from "./UI/select/Select";
-import Button from "./UI/button/Button";
+
 
 const PersonFilter = ({filter,setFilter}) => {
     return (
@@ -15,8 +15,6 @@ const PersonFilter = ({filter,setFilter}) => {
                     {value:'findALL',name:"по всем атрибутам"}
                 ]}
             />
-
-            {/*<Button>🔎</Button>*/}
         </span>
     );
 };
