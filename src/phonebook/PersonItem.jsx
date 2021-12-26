@@ -33,11 +33,8 @@ const PersonItem = (props) => {
                         <div>
                             Квартира №{props.person.apartment}
                         </div>
-
                     </div>
-
                 }
-
             </div>
 
             <div className={"person__btns"}>
