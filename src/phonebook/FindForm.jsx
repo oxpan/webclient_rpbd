@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
 
-const FindForm = ({finds4,findFIO, props}) => {
+const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
 
     const [findVar,setFindVar] = useState({
         find4:'',
@@ -21,18 +21,44 @@ const FindForm = ({finds4,findFIO, props}) => {
 
         if (findVar.findI === '' || findVar.findF === '' || findVar.findO === '')return;
 
-
         if (findVar.findPhType !== '' && findVar.findPhone !== ''){
 
             if (findVar.findStreet !== '' && findVar.findHome !== '' && findVar.findApartment !== ''){
-                console.log("GOFIONUMB2222222");
+
+                const fiALL = {
+                    lastname: findVar.findF,
+                    firstname:findVar.findI,
+                    fathername:findVar.findO,
+                    ph:findVar.findPhone,
+                    type:findVar.findPhType,
+                    street:findVar.findStreet,
+                    home:findVar.findHome,
+                    apartment: findVar.findApartment
+                }
+
+                console.log(fiALL);
+
             }else {
-                console.log("GOFIONUMB");
+                const fiPh = {
+                    lastname: findVar.findF,
+                    firstname:findVar.findI,
+                    fathername:findVar.findO,
+                    ph:findVar.findPhone,
+                    type:findVar.findPhType
+                }
+
+                console.log(fiPh);
             }
 
 
         }else {
-            console.log("NoOO");
+            const fiEmpty = {
+                lastname: findVar.findF,
+                firstname:findVar.findI,
+                fathername:findVar.findO
+            }
+
+            console.log(fiEmpty);
         }
 
     }
