@@ -44,11 +44,8 @@ const PersonPage = () => {
 
                     <Button>💾</Button>
                     <Button>🗑</Button>
-
-
             </div>
             }
-
         </div>
     );
 };

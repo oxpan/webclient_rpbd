@@ -15,7 +15,6 @@ export default class PersonSevice{
     }//это лишнее не забудь поправить!
 
     static async postAddPerson(persone){
-
         let create = {
             lastname:persone.lastname,
             firstname:persone.firstname,

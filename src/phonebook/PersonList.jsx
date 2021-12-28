@@ -25,7 +25,6 @@ const PersonList = ({persone,title,remove}) => {
                     </CSSTransition>
                 )}
             </TransitionGroup>
-
         </div>
     );
 };

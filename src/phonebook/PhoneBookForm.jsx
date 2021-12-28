@@ -19,23 +19,17 @@ const PhoneBookForm = ({create}) => {
         e.preventDefault();
         setCreateLoading(true);
         setTimeout(()=>{
-            // const newPerson={
-            //     ...pers,id:Date.now()
-            // }
             setCreateLoading(false);
 
             if (pers.lastname === "" || pers.firstname === "" || pers.fathername === "")return;
-
 
             create(pers);
         },1000)
 
         setPers({lastname: "",firstname: "",fathername: ""});
-
     }
 
     return (
-
             <form>
                 {isCreateLoading
                     ?
@@ -64,12 +58,10 @@ const PhoneBookForm = ({create}) => {
                         />
 
                         <hr style={{margin:'15px 0'}}/>
-
                         <Button onClick={addPerson}>Создать персону</Button>
                     </div>
                 }
             </form>
-
     );
 };
 

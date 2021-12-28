@@ -36,7 +36,6 @@ const PersonItem = (props) => {
                     </div>
                 }
             </div>
-
             <div className={"person__btns"}>
                 <Button onClick={onOnClick}>🔷</Button>
 

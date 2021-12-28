@@ -12,7 +12,6 @@ const Navbar = () => {
                 <Button>
                     <Link to="/">🏡</Link>
                 </Button>
-
             </div>
         </div>
     );

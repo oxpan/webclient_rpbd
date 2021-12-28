@@ -36,10 +36,7 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
                     apartment: findVar.findApartment
                 }
 
-                // console.log(fiALL);
-
                 findALL(fiALL);
-
             }else {
                 const fiPh = {
                     lastname: findVar.findF,
@@ -48,8 +45,6 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
                     ph:findVar.findPhone,
                     type:findVar.findPhType
                 }
-
-                // console.log(fiPh);
 
                 findFIOph(fiPh);
             }
@@ -60,11 +55,8 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
                 fathername:findVar.findO
             }
 
-            // console.log(fiEmpty);
-
             findFIOEmpty(fiEmpty);
         }
-
     }
     const personFindFIO = (e) => {
         e.preventDefault();
@@ -122,7 +114,6 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
                                     value={findVar.findPhone}
                                     onChange={e=>setFindVar({...findVar,findPhone: e.target.value})}
                                 />
-
                             </div>
                             :
 
@@ -135,14 +126,12 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
                                     disabled={true}
                                 />
 
-
                                 <Input
                                     type={"text"}
                                     placeholder={"Номер:"}
                                     disabled={true}
                                     value={''}
                                 />
-
                             </div>
                     }
 
