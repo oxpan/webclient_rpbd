@@ -77,6 +77,21 @@ function Persons() {
         setModalFind(false);
     }
 
+    const findFIOphPerson = (findpers) => {
+        console.log(findpers);
+        setModalFind(false);
+    }
+
+    const findFIOALL = (findpers) => {
+        console.log(findpers);
+        setModalFind(false);
+    }
+
+    const findFIOEmpty = (findpers) => {
+        console.log(findpers);
+        setModalFind(false);
+    }
+
     return (
         <div className="App">
 
@@ -96,7 +111,13 @@ function Persons() {
 
             <Modal style={{marginTop: 30}} visible={modalFind} setVisible={setModalFind}>
                 {/*<div>{filter}</div>*/}
-                <FindForm finds4={find4Person} findFIO={findFIOPerson} props={filter}/>
+                <FindForm
+                    finds4={find4Person}
+                    findFIO={findFIOPerson}
+                    findALL={findFIOALL}
+                    findFIOEmpty={findFIOEmpty}
+                    findFIOph={findFIOphPerson}
+                    props={filter}/>
             </Modal>
 
             <hr style={{margin:'15px 0'}}/>

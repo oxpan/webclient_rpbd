@@ -42,7 +42,7 @@ const PersonItem = (props) => {
 
                 <Button onClick={handleClick}> _↗_ </Button>
 
-                <Button onClick={()=>props.remove(props.person)}>❌</Button>
+                <Button onClick={()=>props.remove(props.person)}>📍</Button>
             </div>
         </div>
     );

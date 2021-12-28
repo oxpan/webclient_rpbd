@@ -36,7 +36,9 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
                     apartment: findVar.findApartment
                 }
 
-                console.log(fiALL);
+                // console.log(fiALL);
+
+                findALL(fiALL);
 
             }else {
                 const fiPh = {
@@ -47,10 +49,10 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
                     type:findVar.findPhType
                 }
 
-                console.log(fiPh);
+                // console.log(fiPh);
+
+                findFIOph(fiPh);
             }
-
-
         }else {
             const fiEmpty = {
                 lastname: findVar.findF,
@@ -58,7 +60,9 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
                 fathername:findVar.findO
             }
 
-            console.log(fiEmpty);
+            // console.log(fiEmpty);
+
+            findFIOEmpty(fiEmpty);
         }
 
     }
