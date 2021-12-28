@@ -52,6 +52,14 @@ export default class PersonSevice{
         return response.data;
     }
 
+    static async getFindFIOphtypeAddress(last,first,father,ph,type,street,home,apartement){
+        const url = 'http://192.168.1.92:4567/find/person/'+last+'/'+first+'/'+father+'/'+ph+'/'+type+'/'+home+'/'+apartement+'/'+street+'';
+        console.log(url);
+        const response = await axios.get(url)
+        // для вытягивания
+        return response.data;
+    }
+
     static async getFindFIOempty(last,first,father){
         const url = 'http://192.168.1.92:4567/find/person/'+last+'/'+first+'/'+father+'/empty';
         console.log(url);
