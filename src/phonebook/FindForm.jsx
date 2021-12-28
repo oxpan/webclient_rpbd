@@ -37,6 +37,7 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter})
                 }
 
                 findALL(fiALL);
+                setFindVar({findF: '',findI: '',findO: '',ph:'',findPhType: '',findStreet: '',findHome: '',findApartment: ''});
             }else {
                 const fiPh = {
                     lastname: findVar.findF,
@@ -47,6 +48,7 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter})
                 }
 
                 findFIOph(fiPh);
+                setFindVar({findF: '',findI: '',findO: '',ph:'',findPhType: ''});
             }
         }else {
             const fiEmpty = {
@@ -56,11 +58,14 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter})
             }
 
             findFIOEmpty(fiEmpty);
+            setFindVar({findF: '',findI: '',findO: ''});
         }
+
     }
     const personFindFIO = (e) => {
         e.preventDefault();
         findFIO(findVar.findF.trim(),findVar.findI.trim(),findVar.findO.trim());
+        setFindVar({findF: '',findI: '',findO: ''});
     }
     const personFind4 = (e) => {
         e.preventDefault();
@@ -68,6 +73,7 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter})
         if (number.length > 4 || number === '')return;
 
         finds4(number[0],number[1],number[2],number[3]);
+        setFindVar({find4: ''});
     }
 
     return (
