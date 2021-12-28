@@ -47,6 +47,17 @@ function Persons() {
         console.log(lperson.data.length);
         setPerson(lperson.data);
     })
+    const [fetchFindFIOALL,isFindFIOALLLoad,findFIOALLError] = useFetching(async (personFind) =>{
+        const lperson = await PersonSevice.getFindFIOphtypeAddress(personFind);
+        console.log(lperson.data.length);
+        setPerson(lperson.data);
+    })
+    const [fetchFindFIOEmpty,isFindFIOEmptyLoad,findFIOEmptyError] = useFetching(async (personFind) =>{
+        const lperson = await PersonSevice.getFindFIOempty(personFind);
+        console.log(lperson.data.length);
+        setPerson(lperson.data);
+    })
+
 
 
 
@@ -78,17 +89,20 @@ function Persons() {
     }
 
     const findFIOphPerson = (findpers) => {
-        console.log(findpers);
+        // console.log(findpers);
+        fetchFindFIOPerson(findpers);
         setModalFind(false);
     }
 
     const findFIOALL = (findpers) => {
-        console.log(findpers);
+        // console.log(findpers);
+        fetchFindFIOALL(findpers);
         setModalFind(false);
     }
 
     const findFIOEmpty = (findpers) => {
-        console.log(findpers);
+        // console.log(findpers);
+        fetchFindFIOEmpty(findpers);
         setModalFind(false);
     }
 

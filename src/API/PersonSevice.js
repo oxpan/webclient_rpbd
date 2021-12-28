@@ -44,24 +44,37 @@ export default class PersonSevice{
         return response.data;
     }
 
-    static async getFindFIOphtype(last,first,father,ph,type){
-        const url = 'http://192.168.1.92:4567/find/person/'+last+'/'+first+'/'+father+'/'+ph+'/'+type+'';
+    static async getFindFIOphtype(person){
+        const url = 'http://192.168.1.92:4567/find/person/'+
+            person.lastname+'/'+
+            person.firstname+'/'+
+            person.fathername+'/'+
+            person.ph+'/'+
+            person.type+'';
         console.log(url);
         const response = await axios.get(url)
         // для вытягивания
         return response.data;
     }
 
-    static async getFindFIOphtypeAddress(last,first,father,ph,type,street,home,apartement){
-        const url = 'http://192.168.1.92:4567/find/person/'+last+'/'+first+'/'+father+'/'+ph+'/'+type+'/'+home+'/'+apartement+'/'+street+'';
+    static async getFindFIOphtypeAddress(person){
+        const url = 'http://192.168.1.92:4567/find/person/'+
+            person.lastname+'/'+
+            person.firstname+'/'+
+            person.fathername+'/'+
+            person.ph+'/'+
+            person.type+'/'+
+            person.home+'/'+
+            person.apartment+'/'+
+            person.street+'';
         console.log(url);
         const response = await axios.get(url)
         // для вытягивания
         return response.data;
     }
 
-    static async getFindFIOempty(last,first,father){
-        const url = 'http://192.168.1.92:4567/find/person/'+last+'/'+first+'/'+father+'/empty';
+    static async getFindFIOempty(person){
+        const url = 'http://192.168.1.92:4567/find/person/'+person.lastname+'/'+person.firstname+'/'+person.fathername+'/empty';
         console.log(url);
         const response = await axios.get(url)
         // для вытягивания
