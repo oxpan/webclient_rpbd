@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Button from "./UI/button/Button";
 import {useNavigate} from "react-router-dom";
+import PhoneNumberItem from "./PhoneNumberItem";
 
 const PersonItem = (props) => {
     const router = useNavigate();
@@ -34,6 +35,9 @@ const PersonItem = (props) => {
                         <div>
                             <hr style={{margin:'15px 0'}}/>
                             <h4>Номера:</h4>
+                            {props.person.phoneNumberSet.map((numba,)=>
+                                <PhoneNumberItem numb={numba.number} key={numba.phoneType.id}/>
+                            )}
                         </div>
                     </div>
                 }
