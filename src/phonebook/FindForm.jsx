@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
 
-const FindForm = ({finds, props}) => {
+const FindForm = ({finds4, props}) => {
+
+    const [findVar,setFindVar] = useState({
+        find4:'',
+        findFIO:'',
+        findALL:''
+    })
 
     const personFindALL = (e) => {
         e.preventDefault();
@@ -14,7 +20,10 @@ const FindForm = ({finds, props}) => {
     }
     const personFind4 = (e) => {
         e.preventDefault();
-        console.log("JopaJopajopa");
+
+        const number = findVar.find4;
+        // console.log(number[2]);
+        finds4("AAA",number[0],number[1],number[2],number[3]);
     }
 
     return (
@@ -75,6 +84,8 @@ const FindForm = ({finds, props}) => {
                     <Input
                         type={"text"}
                         placeholder={"числа:"}
+                        value={findVar.find4}
+                        onChange={e=>setFindVar({...findVar,find4: e.target.value})}
                     />
 
                     <hr style={{margin:'15px 0'}}/>

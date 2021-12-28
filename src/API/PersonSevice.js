@@ -32,22 +32,24 @@ export default class PersonSevice{
         var json = JSON.stringify(create);
         console.log(json);
 
-
-
-
-        var request = new XMLHttpRequest();
-        request.open("POST", "http://192.168.1.92:4567/add/person");
-        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        request.onreadystatechange = function () {
-            if (request.readyState == 4 && request.status == 200)
-                console.log(request.responseText);
-        }
-        request.send(json);
-
-        console.log("JOPA");
-
-        return create;
+        const response = await axios.post('http://192.168.1.92:4567/add/person',json);
+        // var request = new XMLHttpRequest();
+        // request.open("POST", "http://192.168.1.92:4567/add/person");
+        // request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        // request.onreadystatechange = function () {
+        //     if (request.readyState == 4 && request.status == 200)
+        //         console.log(request.responseText);
+        // }
+        // request.send(json);
+        //
+        // console.log("JOPA");
+        // console.log(response);
+        // console.log(response.data.data.id)
+        return response.data.data.id;
     }
+
+
+
 
 
 
