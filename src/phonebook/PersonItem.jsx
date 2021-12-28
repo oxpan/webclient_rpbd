@@ -38,7 +38,7 @@ const PersonItem = (props) => {
             </div>
 
             <div className={"person__btns"}>
-                {/*<Button onClick={onOnClick}>🔷</Button>*/}
+                <Button onClick={onOnClick}>🔷</Button>
 
                 <Button onClick={handleClick}> _↗_ </Button>
 

@@ -23,6 +23,10 @@ const PhoneBookForm = ({create}) => {
             //     ...pers,id:Date.now()
             // }
             setCreateLoading(false);
+
+            if (pers.lastname === "" || pers.firstname === "" || pers.fathername === "")return;
+
+
             create(pers);
         },1000)
 

@@ -18,7 +18,7 @@ const PersonList = ({persone,title,remove}) => {
                 {persone.map((person,index)=>
                     <CSSTransition
                         key={person.id}
-                        timeout={500}
+                        timeout={50}
                         className={"person"}
                     >
                         <PersonItem remove={remove} number={index + 1} person={person}/>
