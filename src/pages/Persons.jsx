@@ -23,7 +23,7 @@ function Persons() {
         console.log(lperson);
         console.log(lperson.data)
 
-        setPerson([...persone,lperson.data[1]]);
+        // setPerson([...persone,lperson.data[1]]);
         // setPerson(lat); //загрузка
     })
     const [fetchCreatePerson,isCreateLoad,createError] = useFetching(async (personCreate) => {
@@ -43,7 +43,9 @@ function Persons() {
         setPerson(lperson.data);
     } )
     const [fetchFindFIOPerson,isFindFIOLoad,findFIOError] = useFetching(async (last,first,father) => {
-
+        const lperson = await PersonSevice.getFindFIOPerson(last,first,father);
+        console.log(lperson.data.length);
+        setPerson(lperson.data);
     })
 
 
@@ -56,7 +58,7 @@ function Persons() {
 
     useEffect(()=>{
         console.log("Автозагрузка");
-        // fetchPerson();
+        fetchPerson();
     },[])
 
     const removePerson = (person) => {
@@ -72,6 +74,7 @@ function Persons() {
 
     const findFIOPerson = (last,first,father) => {
         fetchFindFIOPerson(last,first,father);
+        setModalFind(false);
     }
 
     return (

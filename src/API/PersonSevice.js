@@ -3,7 +3,7 @@ import axios from "axios";
 export default class PersonSevice{
 
     static async getAll(){
-        const url = 'http://192.168.1.92:4567/find/person/8/8/8/8';
+        const url = 'http://192.168.1.92:4567/find/person/0/0/0/0';
         const response = await axios.get(url)
         // для вытягивания
         return response.data;

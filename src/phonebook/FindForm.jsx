@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
 
@@ -9,24 +9,26 @@ const FindForm = ({finds4,findFIO, props}) => {
         findF:'',
         findI:'',
         findO:'',
-        findALL:''
+        findStreet:'',
+        findHome:'',
+        findApartment:'',
+        findPhone:'',
+        findPhType:''
     })
 
     const personFindALL = (e) => {
         e.preventDefault();
-        console.log("Jopa");
+        // console.log("Jopa");
 
-        findFIO(findVar.findF.trim(),findVar.findI.trim(),findVar.findO.trim());
+
     }
     const personFindFIO = (e) => {
         e.preventDefault();
-        console.log("JopaJopa");
+        findFIO(findVar.findF.trim(),findVar.findI.trim(),findVar.findO.trim());
     }
     const personFind4 = (e) => {
         e.preventDefault();
-
         const number = findVar.find4;
-        // console.log(number[2]);
         finds4(number[0],number[1],number[2],number[3]);
     }
 
@@ -39,44 +41,121 @@ const FindForm = ({finds4,findFIO, props}) => {
                     <Input
                         type={"text"}
                         placeholder={"Фамилия:"}
+                        value={findVar.findF}
+                        onChange={e=>setFindVar({...findVar,findF: e.target.value})}
                     />
                     <Input
                         type={"text"}
                         placeholder={"Имя:"}
+                        value={findVar.findI}
+                        onChange={e=>setFindVar({...findVar,findI: e.target.value})}
                     />
                     <Input
                         type={"text"}
                         placeholder={"Отчество:"}
-                    />
-
-                    <hr style={{margin:'15px 0'}}/>
-                    <label>Адрес:</label>
-                    <Input
-                        type={"text"}
-                        placeholder={"Улица:"}
-                    />
-
-                    <Input
-                        type={"text"}
-                        placeholder={"Дом:"}
-                    />
-
-                    <Input
-                        type={"text"}
-                        placeholder={"Квартира:"}
+                        value={findVar.findO}
+                        onChange={e=>setFindVar({...findVar,findO: e.target.value})}
                     />
 
                     <hr style={{margin:'15px 0'}}/>
                     <label>Номер:</label>
-                    <Input
-                        type={"text"}
-                        placeholder={"Тип:"}
-                    />
+                    {
+                        findVar.findI !== '' && findVar.findO !== '' && findVar.findF !== ''
+                            ?
+                            <div>
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Тип:"}
+                                    disabled={false}
+                                    value={findVar.findPhType}
+                                    onChange={e=>setFindVar({...findVar,findPhType: e.target.value})}
+                                />
 
-                    <Input
-                        type={"text"}
-                        placeholder={"Номер:"}
-                    />
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Номер:"}
+                                    disabled={false}
+                                    value={findVar.findPhone}
+                                    onChange={e=>setFindVar({...findVar,findPhone: e.target.value})}
+                                />
+                            </div>
+                            :
+                            <div>
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Тип:"}
+                                    disabled={true}
+                                    value={''}
+                                />
+
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Номер:"}
+                                    disabled={true}
+                                    value={''}
+                                />
+                            </div>
+                    }
+
+                    <hr style={{margin:'15px 0'}}/>
+                    <label>Адрес:</label>
+                    {
+                        findVar.findPhType !== '' && findVar.findPhone !== ''
+                        ?
+                            <div>
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Улица:"}
+                                    disabled={false}
+                                    value={findVar.findStreet}
+                                    onChange={e=>setFindVar({...findVar,findStreet: e.target.value})}
+                                />
+
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Дом:"}
+                                    disabled={false}
+                                    value={findVar.findHome}
+                                    onChange={e=>setFindVar({...findVar,findHome: e.target.value})}
+                                />
+
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Квартира:"}
+                                    disabled={false}
+                                    value={findVar.findApartment}
+                                    onChange={e=>setFindVar({...findVar,findApartment: e.target.value})}
+
+                                />
+                            </div>
+                        :
+                            <div>
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Улица:"}
+                                    disabled={true}
+                                    value={''}
+                                />
+
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Дом:"}
+                                    disabled={true}
+                                    value={''}
+                                />
+
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Квартира:"}
+                                    disabled={true}
+                                    value={''}
+                                />
+                            </div>
+                    }
+
+
+
+
 
                     <hr style={{margin:'15px 0'}}/>
                     <Button onClick={personFindALL}>Найти персону</Button>
