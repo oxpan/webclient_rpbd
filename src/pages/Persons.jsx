@@ -26,7 +26,7 @@ function Persons() {
         setPerson([...persone,lperson.data[1]]);
         // setPerson(lat); //загрузка
     })
-    const [fetchCreatePerson,isCreatePersonLoad,createError] = useFetching(async (personCreate) => {
+    const [fetchCreatePerson,isCreateLoad,createError] = useFetching(async (personCreate) => {
         // console.log(personCreate);
         const lperson = await PersonSevice.postAddPerson(personCreate);
         // console.log(lperson);
@@ -37,13 +37,13 @@ function Persons() {
 
         setPerson([...persone,newPerson]);
     })
+    const [fetchFind4Person,isFind4Load,find4Error] = useFetching(async (a,b,c,d) => {
+        const lperson = await PersonSevice.getFind4Person(a,b,c,d);
+        console.log(lperson);
+    } )
 
     const createPerson = (newPerson) => {
-        // const persons = PersonSevice.postAddPerson(newPerson);
-
         fetchCreatePerson(newPerson);
-        // setPerson([...persone,newPerson]);
-
         setModal(false);
     }
 
@@ -57,14 +57,11 @@ function Persons() {
         setPerson(persone.filter(p=>p.id !== person.id))
     }
 
-    const find4Person = (pers,a,b,c,d) => {
-        // console.log(pers);
-        // console.log("AAAAA");
-        // console.log(filter);
+    const find4Person = (a,b,c,d) => {
         console.log(a+' '+b+' '+c+' '+d);
 
-
-
+        fetchFind4Person(a,b,c,d);
+        setModalFind(false);
     }
 
     return (

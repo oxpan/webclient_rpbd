@@ -48,6 +48,15 @@ export default class PersonSevice{
         return response.data.data.id;
     }
 
+    static async getFind4Person(a,b,c,d){
+        const url = 'http://192.168.1.92:4567/find/person/'+a+'/'+b+'/'+c+'/'+8+'';
+        console.log(url);
+        const response = await axios.get(url)
+        // для вытягивания
+        return response.data;
+        // return null;
+    }
+
 
 
 

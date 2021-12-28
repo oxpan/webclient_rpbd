@@ -23,7 +23,7 @@ const FindForm = ({finds4, props}) => {
 
         const number = findVar.find4;
         // console.log(number[2]);
-        finds4("AAA",number[0],number[1],number[2],number[3]);
+        finds4(number[0],number[1],number[2],number[3]);
     }
 
     return (
