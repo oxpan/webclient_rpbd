@@ -28,16 +28,37 @@ const PersonItem = (props) => {
                         <div>
                             <hr style={{margin:'15px 0'}}/>
                             <h4>Адрес:</h4>
-                            <span> Улица: {props.person.address.street.streetname}    </span>
-                            <span> Дом №{props.person.address.home}    </span>
-                            <span> Квартира №{props.person.address.apartment}   </span>
+                            {
+                                props.person.address === undefined
+                                ?
+                                 <div>
+                                     нет адреса!
+                                 </div>
+                                 :
+                                 <div>
+                                     <span> Улица: {props.person.address.street.streetname}    </span>
+                                     <span> Дом №{props.person.address.home}    </span>
+                                     <span> Квартира №{props.person.address.apartement}   </span>
+                                 </div>
+                            }
+
                         </div>
                         <div>
                             <hr style={{margin:'15px 0'}}/>
                             <h4>Номера:</h4>
-                            {props.person.phoneNumberSet.map((numba,)=>
-                                <PhoneNumberItem numb={numba.number} phont={numba.phoneType} key={numba.phoneType.id}/>
-                            )}
+                            {
+                                props.person.phoneNumberSet === undefined
+                                ?
+                                    <div>
+                                        Нет номеров!
+                                    </div>
+                                    :
+                                    <div>
+                                        {props.person.phoneNumberSet.map((numba,)=>
+                                            <PhoneNumberItem numb={numba.number} phont={numba.phoneType} key={numba.phoneType.id}/>
+                                        )}
+                                    </div>
+                            }
                         </div>
                     </div>
                 }

@@ -17,7 +17,7 @@ function Persons() {
             id:Date.now(),
             address:{
                 home:23,
-                apartment:228,
+                apartement:228,
                 street:{
                     streetname:"Nemirovicha"
                 }
@@ -28,7 +28,13 @@ function Persons() {
                     phoneType:{
                         id:1
                     }
-                }
+                },
+                {
+                    number:'9(324)533-87-99',
+                    phoneType:{
+                        id:3
+                    }
+                },
             ]
         }
     ])
@@ -52,6 +58,7 @@ function Persons() {
     const [fetchFind4Person,isFind4Load,find4Error] = useFetching(async (a,b,c,d) => {
         const lperson = await PersonSevice.getFind4Person(a,b,c,d);
         console.log(lperson.data.length);
+        console.log(lperson);
         setPerson(lperson.data);
     } )
     const [fetchFindFIOPerson,isFindFIOLoad,findFIOError] = useFetching(async (last,first,father) => {

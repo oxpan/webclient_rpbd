@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PhoneNumberItem = (props) => {
-    console.log(props);
 
     return (
         <div className={"phone"}>
