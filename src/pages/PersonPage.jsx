@@ -16,13 +16,14 @@ const PersonPage = () => {
             lastname:'Zayakin',
             firstname:'Igor',
             fathername:'Ivanovich',
-            id:Date.now(),
+            id:3345,
             home:23,
             apartment:228,
             street:"Nemirovicha"
         }
         // setPers(response.data);
         setPers(persone);
+        console.log(persone);
     })
 
     useEffect(()=>{

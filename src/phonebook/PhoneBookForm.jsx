@@ -24,7 +24,7 @@ const PhoneBookForm = ({create}) => {
             }
             setCreateLoading(false);
             create(newPerson)
-        },5000)
+        },1000)
 
         setPers({lastname: "",firstname: "",fathername: ""});
 
