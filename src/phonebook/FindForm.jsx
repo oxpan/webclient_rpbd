@@ -18,8 +18,22 @@ const FindForm = ({finds4,findFIO, props}) => {
 
     const personFindALL = (e) => {
         e.preventDefault();
-        // console.log("Jopa");
 
+        if (findVar.findI === '' || findVar.findF === '' || findVar.findO === '')return;
+
+
+        if (findVar.findPhType !== '' && findVar.findPhone !== ''){
+
+            if (findVar.findStreet !== '' && findVar.findHome !== '' && findVar.findApartment !== ''){
+                console.log("GOFIONUMB2222222");
+            }else {
+                console.log("GOFIONUMB");
+            }
+
+
+        }else {
+            console.log("NoOO");
+        }
 
     }
     const personFindFIO = (e) => {
@@ -78,15 +92,19 @@ const FindForm = ({finds4,findFIO, props}) => {
                                     value={findVar.findPhone}
                                     onChange={e=>setFindVar({...findVar,findPhone: e.target.value})}
                                 />
+
                             </div>
                             :
+
                             <div>
+
                                 <Input
                                     type={"text"}
                                     placeholder={"Тип:"}
-                                    disabled={true}
                                     value={''}
+                                    disabled={true}
                                 />
+
 
                                 <Input
                                     type={"text"}
@@ -94,6 +112,7 @@ const FindForm = ({finds4,findFIO, props}) => {
                                     disabled={true}
                                     value={''}
                                 />
+
                             </div>
                     }
 
@@ -152,9 +171,6 @@ const FindForm = ({finds4,findFIO, props}) => {
                                 />
                             </div>
                     }
-
-
-
 
 
                     <hr style={{margin:'15px 0'}}/>
