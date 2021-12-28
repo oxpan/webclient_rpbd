@@ -39,7 +39,8 @@ function Persons() {
     })
     const [fetchFind4Person,isFind4Load,find4Error] = useFetching(async (a,b,c,d) => {
         const lperson = await PersonSevice.getFind4Person(a,b,c,d);
-        console.log(lperson);
+        console.log(lperson.data.length);
+        setPerson([...persone,...lperson.data]);
     } )
 
     const createPerson = (newPerson) => {
