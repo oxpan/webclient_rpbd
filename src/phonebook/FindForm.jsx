@@ -87,9 +87,31 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL,filter}) => {
         const number = findVar.find4;
         if (number.length > 4 || number === '')return;
         setLoad(true);
+        var a,b,c,d;
+        if (number[1] === undefined){
+            a = '0';
+            b = '0';
+            c = '0';
+            d = number[0];
+        } else if (number[2] === undefined){
+            a = '0';
+            b = '0';
+            c = number[0];
+            d = number[1];
+        }else if (number[3] === undefined){
+            a = '0';
+            b = number[0];
+            c = number[1];
+            d = number[2];
+        } else {
+            a = number[0];
+            b = number[1];
+            c = number[2];
+            d = number[3];
+        }
         setTimeout(()=> {
             setLoad(false);
-            finds4(number[0], number[1], number[2], number[3]);
+            finds4(a,b,c,d);
         },1000)
         setFindVar({find4: ''});
     }
