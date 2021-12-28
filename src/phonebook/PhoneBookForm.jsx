@@ -18,12 +18,12 @@ const PhoneBookForm = ({create}) => {
     const addPerson = (e) => {
         e.preventDefault();
         setCreateLoading(true);
-        setTimeout(()=>{//временный прикол
-            const newPerson={
-                ...pers,id:Date.now()
-            }
+        setTimeout(()=>{
+            // const newPerson={
+            //     ...pers,id:Date.now()
+            // }
             setCreateLoading(false);
-            create(newPerson)
+            create(pers);
         },1000)
 
         setPers({lastname: "",firstname: "",fathername: ""});

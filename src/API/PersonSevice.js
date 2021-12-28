@@ -14,39 +14,39 @@ export default class PersonSevice{
     }
 
 
-
-
-
-
-
-
-
-
     static async getByID(id){
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts/'+id);// для вытягивания данных
         return response;
     }
 
-    static async postAddPerson(persone){
-        // console.log(persone);
 
-        let pl = {
+    static async postAddPerson(persone){
+
+        let create = {
             lastname:persone.lastname,
             firstname:persone.firstname,
             fathername:persone.fathername
         }
-        console.log(pl);
-        try {
-            const codeRes = await axios.post('http://192.168.1.92:4567/add/person',pl).then(res=>{
-                console.log(res);
-                console.log(res.data);
-            })
-        }catch (e) {
-            console.log(e);
-        }
 
-        // console.log(res);
-        return persone;
+
+        var json = JSON.stringify(create);
+        console.log(json);
+
+
+
+
+        var request = new XMLHttpRequest();
+        request.open("POST", "http://192.168.1.92:4567/add/person");
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200)
+                console.log(request.responseText);
+        }
+        request.send(json);
+
+        console.log("JOPA");
+
+        return create;
     }
 
 

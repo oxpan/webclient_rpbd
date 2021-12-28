@@ -23,38 +23,29 @@ function Persons() {
         console.log(lperson);
         console.log(lperson.data)
 
-        console.log(lperson.data[0].id)
-
-        const lat = {
-            id:lperson.data[0].id,
-            lastname:lperson.data[0].lastname,
-            firstname:lperson.data[0].firstname,
-            fathername:lperson.data[0].fathername
-        }
-
-        console.log(lat);
-        setPerson([...persone,lat]);
+        setPerson([...persone,lperson.data[1]]);
         // setPerson(lat); //загрузка
+    })
+    const [fetchCreatePerson,isCreatePersonLoad,createError] = useFetching(async (personCreate) => {
+        console.log(personCreate);
+        const lperson = await PersonSevice.postAddPerson(personCreate);
+        // console.log(lperson);
     })
 
     const createPerson = (newPerson) => {
 
-        const persons = PersonSevice.postAddPerson(newPerson);
+        // const persons = PersonSevice.postAddPerson(newPerson);
 
+        fetchCreatePerson(newPerson);
         // setPerson([...persone,newPerson]);
-        setModal(false);
 
-        // fetchPersonCreate();
+        setModal(false);
     }
-    // const [fetchPersonCreate,isPersonCreateLoading,personCreateError] = useFetching(async ()=>{
-    //
-    //     const lperson = await PersonSevice.postAddPerson();
-    //     // setPerson(lperson); загрузка
-    // })
+
 
     useEffect(()=>{
         console.log("Автозагрузка");
-        fetchPerson();
+        // fetchPerson();
     },[])
 
     const removePerson = (person) => {
