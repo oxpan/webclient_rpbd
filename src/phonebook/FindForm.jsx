@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
 
-const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
+const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter}) => {
 
     const [findVar,setFindVar] = useState({
         find4:'',
@@ -65,12 +65,14 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
     const personFind4 = (e) => {
         e.preventDefault();
         const number = findVar.find4;
+        if (number.length > 4 || number === '')return;
+
         finds4(number[0],number[1],number[2],number[3]);
     }
 
     return (
         <div>
-            {props === 'findALL'
+            {filter === 'findALL'
                 ?
                 <div>
                     <label>ФИО:</label>
@@ -195,7 +197,7 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
                     <hr style={{margin:'15px 0'}}/>
                     <Button onClick={personFindALL}>Найти персону</Button>
                 </div>
-                : props === 'Find4'
+                : filter === 'Find4'
                 ?
                 <div>
                     <label>Введите 4 цифры от номера</label>
@@ -210,7 +212,7 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props}) => {
 
                     <Button onClick={personFind4}>Найти персону</Button>
                 </div>
-                    : props === 'findFIO'
+                    : filter === 'findFIO'
                     ?
                         <div>
                             <label>ФИО:</label>

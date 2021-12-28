@@ -141,7 +141,7 @@ function Persons() {
                     findALL={findFIOALL}
                     findFIOEmpty={findFIOEmpty}
                     findFIOph={findFIOphPerson}
-                    props={filter}/>
+                    filter={filter}/>
             </Modal>
 
             <hr style={{margin:'15px 0'}}/>
