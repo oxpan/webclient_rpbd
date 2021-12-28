@@ -7,7 +7,7 @@ import Button from "../phonebook/UI/button/Button";
 
 const PersonPage = () => {
     const params = useParams();
-    // console.log(params);
+    console.log(params);
 
     const [pers,setPers] = useState({});
     const [fetchPersonById,isLoading,error] = useFetching(async (id) => {

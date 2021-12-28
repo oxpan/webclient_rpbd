@@ -11,7 +11,26 @@ import FindForm from "../phonebook/FindForm";
 
 function Persons() {
     const [persone,setPerson] = useState([
-        {lastname:'Zayakin', firstname:'Igor', fathername:'Ivanovich',id:Date.now(),home:23,apartment:228,street:"Nemirovicha"}
+        {lastname:'Zayakin',
+            firstname:'Igor',
+            fathername:'Ivanovich',
+            id:Date.now(),
+            address:{
+                home:23,
+                apartment:228,
+                street:{
+                    streetname:"Nemirovicha"
+                }
+            },
+            phoneNumberSet:[
+                {
+                    number:'9(888)789-87-99',
+                    phoneType:{
+                        id:1
+                    }
+                }
+            ]
+        }
     ])
 
     const [filter,setFilter] = useState('');

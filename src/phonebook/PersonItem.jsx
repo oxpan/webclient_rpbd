@@ -25,13 +25,15 @@ const PersonItem = (props) => {
                     isShow &&
                     <div>
                         <div>
-                            Улица {props.person.street}
+                            <hr style={{margin:'15px 0'}}/>
+                            <h4>Адрес:</h4>
+                            <span> Улица: {props.person.address.street.streetname}    </span>
+                            <span> Дом №{props.person.address.home}    </span>
+                            <span> Квартира №{props.person.address.apartment}   </span>
                         </div>
                         <div>
-                            Дом №{props.person.home}
-                        </div>
-                        <div>
-                            Квартира №{props.person.apartment}
+                            <hr style={{margin:'15px 0'}}/>
+                            <h4>Номера:</h4>
                         </div>
                     </div>
                 }
