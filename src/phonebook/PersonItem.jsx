@@ -47,7 +47,7 @@ const PersonItem = (props) => {
                             <hr style={{margin:'15px 0'}}/>
                             <h4>Номера:</h4>
                             {
-                                props.person.phoneNumberSet === undefined
+                                props.person.phoneNumberSet === undefined || props.person.phoneNumberSet.length === 0
                                 ?
                                     <div>
                                         Нет номеров!
