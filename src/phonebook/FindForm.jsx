@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
+import Loader from "./UI/Loader/Loader";
 
-const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter}) => {
+const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL,filter}) => {
 
     const [findVar,setFindVar] = useState({
         find4:'',
@@ -15,6 +16,7 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter})
         findPhone:'',
         findPhType:''
     })
+    const [isLoad,setLoad] = useState(false);
 
     const personFindALL = (e) => {
         e.preventDefault();
@@ -35,8 +37,11 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter})
                     home:findVar.findHome,
                     apartment: findVar.findApartment
                 }
-
-                findALL(fiALL);
+                setLoad(true);
+                setTimeout(()=> {
+                    setLoad(false);
+                    findALL(fiALL);
+                },1000)
                 setFindVar({findF: '',findI: '',findO: '',ph:'',findPhType: '',findStreet: '',findHome: '',findApartment: ''});
             }else {
                 const fiPh = {
@@ -46,8 +51,11 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter})
                     ph:findVar.findPhone,
                     type:findVar.findPhType
                 }
-
-                findFIOph(fiPh);
+                setLoad(true);
+                setTimeout(()=> {
+                    setLoad(false);
+                    findFIOph(fiPh);
+                },1000)
                 setFindVar({findF: '',findI: '',findO: '',ph:'',findPhType: ''});
             }
         }else {
@@ -56,200 +64,219 @@ const FindForm = ({finds4,findFIO,findFIOph,findFIOEmpty,findALL, props,filter})
                 firstname:findVar.findI,
                 fathername:findVar.findO
             }
-
-            findFIOEmpty(fiEmpty);
+            setLoad(true);
+            setTimeout(()=> {
+                setLoad(false);
+                findFIOEmpty(fiEmpty);
+            },1000)
             setFindVar({findF: '',findI: '',findO: ''});
         }
 
     }
     const personFindFIO = (e) => {
         e.preventDefault();
-        findFIO(findVar.findF.trim(),findVar.findI.trim(),findVar.findO.trim());
+        setLoad(true);
+        setTimeout(()=> {
+            setLoad(false);
+            findFIO(findVar.findF.trim(), findVar.findI.trim(), findVar.findO.trim());
+        },1000)
         setFindVar({findF: '',findI: '',findO: ''});
     }
     const personFind4 = (e) => {
         e.preventDefault();
         const number = findVar.find4;
         if (number.length > 4 || number === '')return;
-
-        finds4(number[0],number[1],number[2],number[3]);
+        setLoad(true);
+        setTimeout(()=> {
+            setLoad(false);
+            finds4(number[0], number[1], number[2], number[3]);
+        },1000)
         setFindVar({find4: ''});
     }
 
     return (
         <div>
-            {filter === 'findALL'
-                ?
-                <div>
-                    <label>ФИО:</label>
-                    <Input
-                        type={"text"}
-                        placeholder={"Фамилия:"}
-                        value={findVar.findF}
-                        onChange={e=>setFindVar({...findVar,findF: e.target.value})}
-                    />
-                    <Input
-                        type={"text"}
-                        placeholder={"Имя:"}
-                        value={findVar.findI}
-                        onChange={e=>setFindVar({...findVar,findI: e.target.value})}
-                    />
-                    <Input
-                        type={"text"}
-                        placeholder={"Отчество:"}
-                        value={findVar.findO}
-                        onChange={e=>setFindVar({...findVar,findO: e.target.value})}
-                    />
+            {
+                isLoad
+                    ?
+                    <div style={{display:'flex',justifyContent:'center',marginTop:50}}><Loader/></div>
+                    :
 
-                    <hr style={{margin:'15px 0'}}/>
-                    <label>Номер:</label>
-                    {
-                        findVar.findI !== '' && findVar.findO !== '' && findVar.findF !== ''
+                    <div>
+                        {filter === 'findALL'
                             ?
                             <div>
+                                <label>ФИО:</label>
                                 <Input
                                     type={"text"}
-                                    placeholder={"Тип:"}
-                                    disabled={false}
-                                    value={findVar.findPhType}
-                                    onChange={e=>setFindVar({...findVar,findPhType: e.target.value})}
+                                    placeholder={"Фамилия:"}
+                                    value={findVar.findF}
+                                    onChange={e => setFindVar({...findVar, findF: e.target.value})}
+                                />
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Имя:"}
+                                    value={findVar.findI}
+                                    onChange={e => setFindVar({...findVar, findI: e.target.value})}
+                                />
+                                <Input
+                                    type={"text"}
+                                    placeholder={"Отчество:"}
+                                    value={findVar.findO}
+                                    onChange={e => setFindVar({...findVar, findO: e.target.value})}
                                 />
 
-                                <Input
-                                    type={"text"}
-                                    placeholder={"Номер:"}
-                                    disabled={false}
-                                    value={findVar.findPhone}
-                                    onChange={e=>setFindVar({...findVar,findPhone: e.target.value})}
-                                />
+                                <hr style={{margin: '15px 0'}}/>
+                                <label>Номер:</label>
+                                {
+                                    findVar.findI !== '' && findVar.findO !== '' && findVar.findF !== ''
+                                        ?
+                                        <div>
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Тип:"}
+                                                disabled={false}
+                                                value={findVar.findPhType}
+                                                onChange={e => setFindVar({...findVar, findPhType: e.target.value})}
+                                            />
+
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Номер:"}
+                                                disabled={false}
+                                                value={findVar.findPhone}
+                                                onChange={e => setFindVar({...findVar, findPhone: e.target.value})}
+                                            />
+                                        </div>
+                                        :
+
+                                        <div>
+
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Тип:"}
+                                                value={''}
+                                                disabled={true}
+                                            />
+
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Номер:"}
+                                                disabled={true}
+                                                value={''}
+                                            />
+                                        </div>
+                                }
+
+                                <hr style={{margin: '15px 0'}}/>
+                                <label>Адрес:</label>
+                                {
+                                    findVar.findPhType !== '' && findVar.findPhone !== ''
+                                        ?
+                                        <div>
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Улица:"}
+                                                disabled={false}
+                                                value={findVar.findStreet}
+                                                onChange={e => setFindVar({...findVar, findStreet: e.target.value})}
+                                            />
+
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Дом:"}
+                                                disabled={false}
+                                                value={findVar.findHome}
+                                                onChange={e => setFindVar({...findVar, findHome: e.target.value})}
+                                            />
+
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Квартира:"}
+                                                disabled={false}
+                                                value={findVar.findApartment}
+                                                onChange={e => setFindVar({...findVar, findApartment: e.target.value})}
+
+                                            />
+                                        </div>
+                                        :
+                                        <div>
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Улица:"}
+                                                disabled={true}
+                                                value={''}
+                                            />
+
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Дом:"}
+                                                disabled={true}
+                                                value={''}
+                                            />
+
+                                            <Input
+                                                type={"text"}
+                                                placeholder={"Квартира:"}
+                                                disabled={true}
+                                                value={''}
+                                            />
+                                        </div>
+                                }
+
+
+                                <hr style={{margin: '15px 0'}}/>
+                                <Button onClick={personFindALL}>Найти персону</Button>
                             </div>
-                            :
+                            : filter === 'Find4'
+                                ?
+                                <div>
+                                    <label>Введите 4 цифры от номера</label>
+                                    <Input
+                                        type={"text"}
+                                        placeholder={"числа:"}
+                                        value={findVar.find4}
+                                        onChange={e => setFindVar({...findVar, find4: e.target.value})}
+                                    />
 
-                            <div>
+                                    <hr style={{margin: '15px 0'}}/>
 
-                                <Input
-                                    type={"text"}
-                                    placeholder={"Тип:"}
-                                    value={''}
-                                    disabled={true}
-                                />
+                                    <Button onClick={personFind4}>Найти персону</Button>
+                                </div>
+                                : filter === 'findFIO'
+                                    ?
+                                    <div>
+                                        <label>ФИО:</label>
+                                        <Input
+                                            type={"text"}
+                                            placeholder={"Фамилия:"}
+                                            value={findVar.findF}
+                                            onChange={e => setFindVar({...findVar, findF: e.target.value})}
+                                        />
 
-                                <Input
-                                    type={"text"}
-                                    placeholder={"Номер:"}
-                                    disabled={true}
-                                    value={''}
-                                />
-                            </div>
-                    }
+                                        <Input
+                                            type={"text"}
+                                            placeholder={"Имя:"}
+                                            value={findVar.findI}
+                                            onChange={e => setFindVar({...findVar, findI: e.target.value})}
+                                        />
 
-                    <hr style={{margin:'15px 0'}}/>
-                    <label>Адрес:</label>
-                    {
-                        findVar.findPhType !== '' && findVar.findPhone !== ''
-                        ?
-                            <div>
-                                <Input
-                                    type={"text"}
-                                    placeholder={"Улица:"}
-                                    disabled={false}
-                                    value={findVar.findStreet}
-                                    onChange={e=>setFindVar({...findVar,findStreet: e.target.value})}
-                                />
+                                        <Input
+                                            type={"text"}
+                                            placeholder={"Отчество:"}
+                                            value={findVar.findO}
+                                            onChange={e => setFindVar({...findVar, findO: e.target.value})}
+                                        />
 
-                                <Input
-                                    type={"text"}
-                                    placeholder={"Дом:"}
-                                    disabled={false}
-                                    value={findVar.findHome}
-                                    onChange={e=>setFindVar({...findVar,findHome: e.target.value})}
-                                />
-
-                                <Input
-                                    type={"text"}
-                                    placeholder={"Квартира:"}
-                                    disabled={false}
-                                    value={findVar.findApartment}
-                                    onChange={e=>setFindVar({...findVar,findApartment: e.target.value})}
-
-                                />
-                            </div>
-                        :
-                            <div>
-                                <Input
-                                    type={"text"}
-                                    placeholder={"Улица:"}
-                                    disabled={true}
-                                    value={''}
-                                />
-
-                                <Input
-                                    type={"text"}
-                                    placeholder={"Дом:"}
-                                    disabled={true}
-                                    value={''}
-                                />
-
-                                <Input
-                                    type={"text"}
-                                    placeholder={"Квартира:"}
-                                    disabled={true}
-                                    value={''}
-                                />
-                            </div>
-                    }
-
-
-                    <hr style={{margin:'15px 0'}}/>
-                    <Button onClick={personFindALL}>Найти персону</Button>
-                </div>
-                : filter === 'Find4'
-                ?
-                <div>
-                    <label>Введите 4 цифры от номера</label>
-                    <Input
-                        type={"text"}
-                        placeholder={"числа:"}
-                        value={findVar.find4}
-                        onChange={e=>setFindVar({...findVar,find4: e.target.value})}
-                    />
-
-                    <hr style={{margin:'15px 0'}}/>
-
-                    <Button onClick={personFind4}>Найти персону</Button>
-                </div>
-                    : filter === 'findFIO'
-                    ?
-                        <div>
-                            <label>ФИО:</label>
-                            <Input
-                                type={"text"}
-                                placeholder={"Фамилия:"}
-                                value={findVar.findF}
-                                onChange={e=>setFindVar({...findVar,findF: e.target.value})}
-                            />
-
-                            <Input
-                                type={"text"}
-                                placeholder={"Имя:"}
-                                value={findVar.findI}
-                                onChange={e=>setFindVar({...findVar,findI: e.target.value})}
-                            />
-
-                            <Input
-                                type={"text"}
-                                placeholder={"Отчество:"}
-                                value={findVar.findO}
-                                onChange={e=>setFindVar({...findVar,findO: e.target.value})}
-                            />
-
-                            <hr style={{margin:'15px 0'}}/>
-                            <Button onClick={personFindFIO}>Найти персону</Button>
-                        </div>
-                        :
-                        <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
-                            <h1>⚠</h1>
-                        </div>
+                                        <hr style={{margin: '15px 0'}}/>
+                                        <Button onClick={personFindFIO}>Найти персону</Button>
+                                    </div>
+                                    :
+                                    <div style={{display: 'flex', justifyContent: 'center', marginTop: 50}}>
+                                        <h1>⚠</h1>
+                                    </div>
+                        }
+                    </div>
             }
         </div>
     );
