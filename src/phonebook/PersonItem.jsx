@@ -36,7 +36,7 @@ const PersonItem = (props) => {
                             <hr style={{margin:'15px 0'}}/>
                             <h4>Номера:</h4>
                             {props.person.phoneNumberSet.map((numba,)=>
-                                <PhoneNumberItem numb={numba.number} key={numba.phoneType.id}/>
+                                <PhoneNumberItem numb={numba.number} phont={numba.phoneType} key={numba.phoneType.id}/>
                             )}
                         </div>
                     </div>
