@@ -2,23 +2,17 @@ import axios from "axios";
 
 export default class PersonSevice{
 
-    //добавь конст
-
     static async getAll(){
-
         const url = 'http://192.168.1.92:4567/find/person/8/8/8/8';
         const response = await axios.get(url)
         // для вытягивания
         return response.data;
-
-    }
-
+    }//это лишнее не забудь поправить!
 
     static async getByID(id){
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts/'+id);// для вытягивания данных
         return response;
-    }
-
+    }//это лишнее не забудь поправить!
 
     static async postAddPerson(persone){
 
@@ -27,24 +21,9 @@ export default class PersonSevice{
             firstname:persone.firstname,
             fathername:persone.fathername
         }
-
-
         var json = JSON.stringify(create);
         console.log(json);
-
         const response = await axios.post('http://192.168.1.92:4567/add/person',json);
-        // var request = new XMLHttpRequest();
-        // request.open("POST", "http://192.168.1.92:4567/add/person");
-        // request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        // request.onreadystatechange = function () {
-        //     if (request.readyState == 4 && request.status == 200)
-        //         console.log(request.responseText);
-        // }
-        // request.send(json);
-        //
-        // console.log("JOPA");
-        // console.log(response);
-        // console.log(response.data.data.id)
         return response.data.data.id;
     }
 
@@ -57,11 +36,106 @@ export default class PersonSevice{
         // return null;
     }
 
+    static async getFindFIOPerson(last,first,father){
+        const url = 'http://192.168.1.92:4567/find/person/'+last+'/'+first+'/'+father+'/list';
+        console.log(url);
+        const response = await axios.get(url)
+        // для вытягивания
+        return response.data;
+    }
 
+    static async getFindFIOphtype(last,first,father,ph,type){
+        const url = 'http://192.168.1.92:4567/find/person/'+last+'/'+first+'/'+father+'/'+ph+'/'+type+'';
+        console.log(url);
+        const response = await axios.get(url)
+        // для вытягивания
+        return response.data;
+    }
 
+    static async getFindFIOempty(last,first,father){
+        const url = 'http://192.168.1.92:4567/find/person/'+last+'/'+first+'/'+father+'/empty';
+        console.log(url);
+        const response = await axios.get(url)
+        // для вытягивания
+        return response.data;
+    }
 
+    static async putUpdateAddress(id,homeA,appartementA,streetName){
+        const url = 'http://192.168.1.92:4567/update/address/'+id+'';
+        console.log(url);
 
+        let create = {
+            home:homeA,
+            appartement:appartementA,
+            street:{
+                streetname:streetName
+            }
+        }
+        var json = JSON.stringify(create);
+        console.log(json);
 
+        const response = await axios.put(url)
+        // для вытягивания
+        return response.data;
+    }
 
+    static async deleteAddress(id){
+        const url = 'http://192.168.1.92:4567/delete/address/'+id+'';
+        console.log(url);
+        const response = await axios.delete(url)
+        // для вытягивания
+        return response.data;
+    }
 
+    static async postAddPhone(id,number,type){
+        const url = 'http://192.168.1.92:4567/add/phone/'+id+'';
+        console.log(url);
+
+        let create = {
+            number:number,
+            phoneType:{
+                id:type
+            }
+        }
+        var json = JSON.stringify(create);
+        console.log(json);
+
+        const response = await axios.post(url)
+        // для вытягивания
+        return response.data;
+    }
+
+    static async putUpdatePhone(id,pos,number,type){
+        const url = 'http://192.168.1.92:4567/update/phone/'+id+'/'+pos+'';
+        console.log(url);
+
+        let create = {
+            number:number,
+            phoneType:{
+                id:type
+            }
+        }
+        var json = JSON.stringify(create);
+        console.log(json);
+
+        const response = await axios.put(url)
+        // для вытягивания
+        return response.data;
+    }
+
+    static async deletePhone(id,pos){
+        const url = 'http://192.168.1.92:4567/delete/phone/'+id+'/'+pos+'';
+        console.log(url);
+        const response = await axios.delete(url)
+        // для вытягивания
+        return response.data;
+    }
+
+    static async deletePhone(id){
+        const url = 'http://192.168.1.92:4567/delete/person/'+id+'';
+        console.log(url);
+        const response = await axios.delete(url)
+        // для вытягивания
+        return response.data;
+    }
 }

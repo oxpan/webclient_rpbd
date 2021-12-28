@@ -2,17 +2,21 @@ import React, {useState} from 'react';
 import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
 
-const FindForm = ({finds4, props}) => {
+const FindForm = ({finds4,findFIO, props}) => {
 
     const [findVar,setFindVar] = useState({
         find4:'',
-        findFIO:'',
+        findF:'',
+        findI:'',
+        findO:'',
         findALL:''
     })
 
     const personFindALL = (e) => {
         e.preventDefault();
         console.log("Jopa");
+
+        findFIO(findVar.findF.trim(),findVar.findI.trim(),findVar.findO.trim());
     }
     const personFindFIO = (e) => {
         e.preventDefault();
@@ -99,16 +103,22 @@ const FindForm = ({finds4, props}) => {
                             <Input
                                 type={"text"}
                                 placeholder={"Фамилия:"}
+                                value={findVar.findF}
+                                onChange={e=>setFindVar({...findVar,findF: e.target.value})}
                             />
 
                             <Input
                                 type={"text"}
                                 placeholder={"Имя:"}
+                                value={findVar.findI}
+                                onChange={e=>setFindVar({...findVar,findI: e.target.value})}
                             />
 
                             <Input
                                 type={"text"}
                                 placeholder={"Отчество:"}
+                                value={findVar.findO}
+                                onChange={e=>setFindVar({...findVar,findO: e.target.value})}
                             />
 
                             <hr style={{margin:'15px 0'}}/>

@@ -42,6 +42,11 @@ function Persons() {
         console.log(lperson.data.length);
         setPerson(lperson.data);
     } )
+    const [fetchFindFIOPerson,isFindFIOLoad,findFIOError] = useFetching(async (last,first,father) => {
+
+    })
+
+
 
     const createPerson = (newPerson) => {
         fetchCreatePerson(newPerson);
@@ -65,6 +70,10 @@ function Persons() {
         setModalFind(false);
     }
 
+    const findFIOPerson = (last,first,father) => {
+        fetchFindFIOPerson(last,first,father);
+    }
+
     return (
         <div className="App">
 
@@ -84,7 +93,7 @@ function Persons() {
 
             <Modal style={{marginTop: 30}} visible={modalFind} setVisible={setModalFind}>
                 {/*<div>{filter}</div>*/}
-                <FindForm finds4={find4Person} props={filter}/>
+                <FindForm finds4={find4Person} findFIO={findFIOPerson} props={filter}/>
             </Modal>
 
             <hr style={{margin:'15px 0'}}/>
