@@ -7,6 +7,8 @@ import Navbar from "./phonebook/UI/Navbar/Navbar";
 import Error from "./pages/Error";
 import AppRouter from "./phonebook/AppRouter";
 
+
+
 function App() {
 
 
@@ -14,12 +16,8 @@ function App() {
         <Router>
             <Navbar/>
 
-            <AppRouter/>
 
-            {/*<Routes>*/}
-            {/*    <Route path={"/"} element={<Persons/>}/>*/}
-            {/*    <Route path={"aaaa"} element={<About/>}/>*/}
-            {/*</Routes>*/}
+            <AppRouter/>
 
 
         </Router>

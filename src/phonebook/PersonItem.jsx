@@ -3,11 +3,16 @@ import Button from "./UI/button/Button";
 import {useNavigate} from "react-router-dom";
 import PhoneNumberItem from "./PhoneNumberItem";
 
+
+
 const PersonItem = (props) => {
+    // console.log(props);
     const router = useNavigate();
     const [isShow,setShow] = useState(false);
 
     function handleClick(){
+        // buffPerson = props.person;
+
         router(`/link/${props.person.id}`);
     }
 
@@ -38,7 +43,7 @@ const PersonItem = (props) => {
                                  <div>
                                      <span> Улица: {props.person.address.street.streetname}    </span>
                                      <span> Дом №{props.person.address.home}    </span>
-                                     <span> Квартира №{props.person.address.apartement}   </span>
+                                     <span> Квартира №{props.person.address.appartement}   </span>
                                  </div>
                             }
 
@@ -66,7 +71,7 @@ const PersonItem = (props) => {
             <div className={"person__btns"}>
                 <Button onClick={onOnClick}>🔷</Button>
 
-                <Button onClick={handleClick}> _↗_ </Button>
+                <Button onClick={handleClick} > _↗_ </Button>
 
                 <Button onClick={()=>props.remove(props.person)}>📍</Button>
             </div>

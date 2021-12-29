@@ -51,6 +51,10 @@ const PersonPage = () => {
             <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
                 <Button >❌</Button>
             </div>
+
+
+            {/*<span>{buffPerson}</span>*/}
+
             {/*{isLoading*/}
             {/*    ? <div style={{display:'flex',justifyContent:'center',marginTop:50}}><Loader/></div>*/}
             {/*    : <div>*/}

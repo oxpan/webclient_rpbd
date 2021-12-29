@@ -6,6 +6,8 @@ import Error from "../pages/Error";
 import PersonPage from "../pages/PersonPage";
 
 const AppRouter = () => {
+
+
     return (
         <Routes>
             <Route path={"/"} element={<Persons/>}/>

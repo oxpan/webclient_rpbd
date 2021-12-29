@@ -9,7 +9,7 @@ import PhoneBookForm from "../phonebook/PhoneBookForm";
 import PersonSevice from "../API/PersonSevice";
 import FindForm from "../phonebook/FindForm";
 
-function Persons() {
+const Persons = () => {
     const [persone,setPerson] = useState([
         {lastname:'Zayakin',
             firstname:'Igor',
@@ -17,7 +17,7 @@ function Persons() {
             id:Date.now(),
             address:{
                 home:23,
-                apartement:228,
+                appartement:228,
                 street:{
                     streetname:"Nemirovicha"
                 }

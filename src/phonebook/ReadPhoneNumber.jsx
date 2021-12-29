@@ -62,8 +62,7 @@ const ReadPhoneNumber = () => {
 
             {/*    здесь будет список номеров*/}
 
-
-
+            <span>здесь будет список номеров</span>
 
             <hr style={{margin:'15px 0'}}/>
         </div>
