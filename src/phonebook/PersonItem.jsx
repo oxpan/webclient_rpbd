@@ -13,7 +13,7 @@ const PersonItem = (props) => {
     function handleClick(){
         // buffPerson = props.person;
 
-        router(`/link/${props.person.id}`);
+        router(`/link/${props.number}`);
     }
 
     function onOnClick(){
@@ -59,7 +59,7 @@ const PersonItem = (props) => {
                                     </div>
                                     :
                                     <div>
-                                        {props.person.phoneNumberSet.map((numba,)=>
+                                        {props.person.phoneNumberSet.map((numba)=>
                                             <PhoneNumberItem numb={numba.number} phont={numba.phoneType} key={numba.phoneType.id}/>
                                         )}
                                     </div>

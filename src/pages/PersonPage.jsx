@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useFetching} from "../hooks/useFetching";
 import PersonSevice from "../API/PersonSevice";
@@ -8,8 +8,11 @@ import ReadPersonFIO from "../phonebook/ReadPersonFIO";
 import ReadAddress from "../phonebook/ReadAddress";
 import ReadPhoneNumber from "../phonebook/ReadPhoneNumber";
 import Modal from "../phonebook/UI/Modal/Modal";
+import {AutchContext} from "../phonebook/context";
 
 const PersonPage = () => {
+    const {isPersonList,setPersonList} = useContext(AutchContext);
+    console.log(isPersonList);
     const params = useParams();
     console.log(params);
 
@@ -42,29 +45,15 @@ const PersonPage = () => {
             {error &&
                 <div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>⛈</h1></div>
             }
-            <ReadPersonFIO/>
-            <ReadAddress/>
-            <ReadPhoneNumber/>
+            <ReadPersonFIO personList={isPersonList} currenID={params.id - 1}/>
+            <ReadAddress personList={isPersonList} currenID={params.id - 1}/>
+            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1}/>
 
 
 
             <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
                 <Button >❌</Button>
             </div>
-
-
-            {/*<span>{buffPerson}</span>*/}
-
-            {/*{isLoading*/}
-            {/*    ? <div style={{display:'flex',justifyContent:'center',marginTop:50}}><Loader/></div>*/}
-            {/*    : <div>*/}
-            {/*        <div> {pers.lastname} {pers.firstname} {pers.fathername}</div>*/}
-            {/*        <div> {pers.street}  {pers.home} {pers.apartment}</div>*/}
-
-            {/*        <Button>💾</Button>*/}
-            {/*        <Button>🗑</Button>*/}
-            {/*    </div>*/}
-            {/*}*/}
         </div>
     );
 };

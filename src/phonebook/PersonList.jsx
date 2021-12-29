@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PersonItem from "./PersonItem";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
+import {AutchContext} from "./context";
 
 const PersonList = ({persone,title,remove}) => {
+    const {isPersonList,setPersonList} = useContext(AutchContext);
+    setPersonList(persone);
+    console.log(isPersonList);
     if (!persone.length){
         return (
             <h1 style={{textAlign:'center'}}>

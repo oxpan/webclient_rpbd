@@ -2,12 +2,15 @@ import React, {useState} from 'react';
 import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
 import Modal from "./UI/Modal/Modal";
+import PersonItem from "./PersonItem";
+import PhoneNumberItem from "./PhoneNumberItem";
 
-const ReadPhoneNumber = () => {
+const ReadPhoneNumber = ({currenID, personList, readPhoneNumberPerson}) => {
     const [visebleAdd,setVisebleAdd] = useState(false);
     const [visebleUpdate,setVisebleUpdate] = useState(false);
     const [visebleDelete,setVisebleDelete] = useState(false);
 
+    console.log(personList[currenID].phoneNumberSet);
 
     return (
         <div>
@@ -60,9 +63,14 @@ const ReadPhoneNumber = () => {
                 <Button onClick={()=>setVisebleDelete(true)}>❌</Button>
             </div>
 
-            {/*    здесь будет список номеров*/}
-
-            <span>здесь будет список номеров</span>
+            <span>список номеров</span>
+            <div>
+                {
+                    personList[currenID].phoneNumberSet.map((numba) =>
+                        <PhoneNumberItem numb={numba.number} phont={numba.phoneType} key={numba.phoneType.id}/>
+                    )
+                }
+            </div>
 
             <hr style={{margin:'15px 0'}}/>
         </div>

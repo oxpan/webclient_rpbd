@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {useFetching} from "../hooks/useFetching";
 import Button from "../phonebook/UI/button/Button";
 import Modal from "../phonebook/UI/Modal/Modal";
@@ -8,6 +8,7 @@ import PersonList from "../phonebook/PersonList";
 import PhoneBookForm from "../phonebook/PhoneBookForm";
 import PersonSevice from "../API/PersonSevice";
 import FindForm from "../phonebook/FindForm";
+import {AutchContext} from "../phonebook/context";
 
 const Persons = () => {
     const [persone,setPerson] = useState([
@@ -38,6 +39,7 @@ const Persons = () => {
             ]
         }
     ])
+
 
     const [filter,setFilter] = useState('');
     const [modalFind,setModalFind] = useState(false);
