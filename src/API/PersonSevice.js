@@ -151,7 +151,7 @@ export default class PersonSevice{
         return response.data;
     }
 
-    static async deletePhone(id){
+    static async deletePerson(id){
         const url = 'http://192.168.1.92:4567/delete/person/'+id+'';
         console.log(url);
         const response = await axios.delete(url)
