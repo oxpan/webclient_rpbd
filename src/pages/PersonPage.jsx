@@ -18,8 +18,7 @@ const PersonPage = () => {
 
     const [visebleDel,setVisebleDel] = useState(false);
 
-    const [pers,setPers] = useState(isPersonList);
-    console.log(pers);
+
     const [fetchPersonById,isLoading,error] = useFetching(async (id) => {
         // const response = await PersonSevice.getByID(id);
         // const persone = {
@@ -60,7 +59,7 @@ const PersonPage = () => {
         //         id:perslocal.type
         //     }
         // }
-        // setPers([...pers.phoneNumberSet,newNumb]);
+        // setPers([...pers,newNumb]);
     })
     const [fetchPersonUpdatePhonN,isPersonUpdatePhonNLoading,personUpdatePhonNError] = useFetching(async (perslocal)=>{
         // console.log(perslocal);

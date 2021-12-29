@@ -15,6 +15,8 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
         type:''
     })
     const [clickButton,setClickButton] = useState(true);
+    const [pers,setPers] = useState(personList[currenID].phoneNumberSet);
+    console.log(pers);
 
     const addPhNumber = (e) => {
         e.preventDefault();
@@ -32,6 +34,7 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
             type:issNumber.type
         }
         addPhNu(newNumber);
+        setVisebleAdd(false);
     }
     const updatePhN = (e) => {
         e.preventDefault();
@@ -56,6 +59,7 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
         }
         // console.log("URA");
         updatePhNumb(newNumber);
+        setVisebleUpdate(false);
     }
     const deletePhN = (e) => {
         e.preventDefault();
@@ -67,6 +71,7 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
             pos:intNumm.toString()
         }
         deletePhNumb(numbdel);
+        setVisebleDelete(false);
     }
 
     // console.log(personList[currenID].phoneNumberSet);
