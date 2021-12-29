@@ -107,20 +107,20 @@ export default class PersonSevice{
         return response.data;
     }
 
-    static async postAddPhone(id,number,type){
-        const url = 'http://192.168.1.92:4567/add/phone/'+id+'';
+    static async postAddPhone(pers){
+        const url = 'http://192.168.1.92:4567/add/phone/'+pers.id+'';
         console.log(url);
 
         let create = {
-            number:number,
+            number:pers.number,
             phoneType:{
-                id:type
+                id:pers.type
             }
         }
         var json = JSON.stringify(create);
         console.log(json);
 
-        const response = await axios.post(url)
+        const response = await axios.post(url,json);
         // для вытягивания
         return response.data;
     }

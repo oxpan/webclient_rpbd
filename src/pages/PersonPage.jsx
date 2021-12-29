@@ -18,20 +18,21 @@ const PersonPage = () => {
 
     const [visebleDel,setVisebleDel] = useState(false);
 
-    const [pers,setPers] = useState({});
+    const [pers,setPers] = useState(isPersonList);
+    console.log(pers);
     const [fetchPersonById,isLoading,error] = useFetching(async (id) => {
         // const response = await PersonSevice.getByID(id);
-        const persone = {
-            lastname:'Zayakin',
-            firstname:'Igor',
-            fathername:'Ivanovich',
-            id:3345,
-            home:23,
-            apartment:228,
-            street:"Nemirovicha"
-        }
+        // const persone = {
+        //     lastname:'Zayakin',
+        //     firstname:'Igor',
+        //     fathername:'Ivanovich',
+        //     id:3345,
+        //     home:23,
+        //     apartment:228,
+        //     street:"Nemirovicha"
+        // }
         // setPers(response.data);
-        setPers(persone);
+        // setPers(persone);
         // console.log(persone);
     })
     const [fetchPersonUpdate,isPersonUpdateLoading,personUpdateError] = useFetching(async (pers)=>{
@@ -49,6 +50,17 @@ const PersonPage = () => {
     const [fetchPersonDelete,isPersonDeleteLoading,personDeleteError] = useFetching(async (id)=>{
         const lperson = await PersonSevice.deletePerson(id);
         console.log(pers);
+    })
+    const [fetchPersonAddPhonN,isPersonAddPhonNLoading,personAddPhonNError] = useFetching(async (perslocal)=>{
+        const lperson = await PersonSevice.postAddPhone(perslocal);
+        console.log(perslocal);
+        // const newNumb = {
+        //     number:perslocal.number,
+        //     phoneType:{
+        //         id:perslocal.type
+        //     }
+        // }
+        // setPers([...pers.phoneNumberSet,newNumb]);
     })
 
     useEffect(()=>{
@@ -70,6 +82,10 @@ const PersonPage = () => {
     const deletePerson = () => {
         fetchPersonDelete(isPersonList[params.id-1].id);
     }
+    const addPhone = (pers) => {
+        console.log(pers);
+        fetchPersonAddPhonN(pers);
+    }
 
     return (
         <div>
@@ -86,7 +102,7 @@ const PersonPage = () => {
             {/*    ?*/}
             {/*        <div>НОМЕРОВ НЕТУ</div>*/}
             {/*        :*/}
-            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1}/>
+            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1} addPhNu={addPhone}/>
             {/*}*/}
             <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
                 <Button onClick={deletePerson}>❌</Button>
