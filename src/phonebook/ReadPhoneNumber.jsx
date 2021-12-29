@@ -20,7 +20,6 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
 
     const addPhNumber = (e) => {
         e.preventDefault();
-        if (issNumber.type === '1'){}else if(issNumber.type === '2'){}else if(issNumber.type === '3'){}else return;
 
         if (issNumber.numberphone[1] !== '(' ||
             issNumber.numberphone[5] !== ')' ||
@@ -35,12 +34,19 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
         }
         addPhNu(newNumber);
         setVisebleAdd(false);
+        const newNumb = {
+            number:newNumber.number,
+            phoneType:{
+                id:newNumber.type
+            }
+        }
+        setPers([...pers,newNumb]);
     }
     const updatePhN = (e) => {
         e.preventDefault();
         // console.log(personList[currenID].phoneNumberSet.length)
         // console.log(parseInt(issNumber.inumber,10))
-        if (issNumber.type === '1'){}else if(issNumber.type === '2'){}else if(issNumber.type === '3'){}else return;
+
 
         if (issNumber.numberphone[1] !== '(' ||
             issNumber.numberphone[5] !== ')' ||
@@ -60,6 +66,16 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
         // console.log("URA");
         updatePhNumb(newNumber);
         setVisebleUpdate(false);
+
+        const elem = {
+            number:newNumber.number,
+            phoneType:{
+                id:newNumber.type
+            }
+        }
+
+        pers[intNumm] = elem;
+
     }
     const deletePhN = (e) => {
         e.preventDefault();
@@ -72,8 +88,11 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
         }
         deletePhNumb(numbdel);
         setVisebleDelete(false);
-    }
 
+        const tmp = pers.splice(numbdel.pos,1);
+        console.log(tmp);
+    }
+    console.log(pers);
     // console.log(personList[currenID].phoneNumberSet);
 
     return (
@@ -155,21 +174,34 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
 
             </div>
 
+            {/*<span>список номеров</span>*/}
+            {/*{*/}
+            {/*    personList[currenID].phoneNumberSet === undefined*/}
+            {/*    ?*/}
+            {/*        <div>НОМЕРОВ НЕТУ</div>*/}
+            {/*        :*/}
+            {/*        <ol>*/}
+            {/*            {*/}
+            {/*                personList[currenID].phoneNumberSet.map((numba) =>*/}
+            {/*                    <PhoneNumberItem numb={numba.number} phont={numba.phoneType} key={numba.phoneType.id}/>*/}
+            {/*                )*/}
+            {/*            }*/}
+            {/*        </ol>*/}
+            {/*}*/}
             <span>список номеров</span>
             {
-                personList[currenID].phoneNumberSet === undefined
-                ?
+                pers === undefined
+                    ?
                     <div>НОМЕРОВ НЕТУ</div>
                     :
                     <ol>
                         {
-                            personList[currenID].phoneNumberSet.map((numba) =>
+                            pers.map((numba) =>
                                 <PhoneNumberItem numb={numba.number} phont={numba.phoneType} key={numba.phoneType.id}/>
                             )
                         }
                     </ol>
             }
-
 
             <hr style={{margin:'15px 0'}}/>
         </div>

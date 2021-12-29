@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useFetching} from "../hooks/useFetching";
 import PersonSevice from "../API/PersonSevice";
 import Loader from "../phonebook/UI/Loader/Loader";
@@ -14,6 +14,7 @@ const PersonPage = () => {
     const {isPersonList,setPersonList} = useContext(AutchContext);
     // console.log(isPersonList);
     const params = useParams();
+    const router = useNavigate();
     // console.log(params);
 
     const [visebleDel,setVisebleDel] = useState(false);
@@ -75,7 +76,7 @@ const PersonPage = () => {
     })
     const [fetchPersonDeletePhonN,isPersonDeletePhonNLoading,personDeletePhonNError] = useFetching(async (perslocal)=>{
         // console.log(perslocal);
-        const lperson = await PersonSevice.deletePhone();
+        const lperson = await PersonSevice.deletePhone(perslocal);
         console.log(lperson);
         // const newNumb = {
         //     number:perslocal.number,
@@ -104,6 +105,7 @@ const PersonPage = () => {
     }
     const deletePerson = () => {
         fetchPersonDelete(isPersonList[params.id-1].id);
+        router(`/`);
     }
     const addPhone = (pers) => {
         console.log(pers);

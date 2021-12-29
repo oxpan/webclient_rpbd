@@ -12,32 +12,32 @@ import {AutchContext} from "../phonebook/context";
 
 const Persons = () => {
     const [persone,setPerson] = useState([
-        {lastname:'Zayakin',
-            firstname:'Igor',
-            fathername:'Ivanovich',
-            id:Date.now(),
-            address:{
-                home:23,
-                appartement:228,
-                street:{
-                    streetname:"Nemirovicha"
-                }
-            },
-            phoneNumberSet:[
-                {
-                    number:'9(888)789-87-99',
-                    phoneType:{
-                        id:1
-                    }
-                },
-                {
-                    number:'9(324)533-87-99',
-                    phoneType:{
-                        id:3
-                    }
-                },
-            ]
-        }
+        // {lastname:'Zayakin',
+        //     firstname:'Igor',
+        //     fathername:'Ivanovich',
+        //     id:Date.now(),
+        //     address:{
+        //         home:23,
+        //         appartement:228,
+        //         street:{
+        //             streetname:"Nemirovicha"
+        //         }
+        //     },
+        //     phoneNumberSet:[
+        //         {
+        //             number:'9(888)789-87-99',
+        //             phoneType:{
+        //                 id:1
+        //             }
+        //         },
+        //         {
+        //             number:'9(324)533-87-99',
+        //             phoneType:{
+        //                 id:3
+        //             }
+        //         },
+        //     ]
+        // }
     ])
 
 
