@@ -80,21 +80,21 @@ export default class PersonSevice{
         return response.data;
     }
 
-    static async putUpdateAddress(id,homeA,appartementA,streetName){
-        const url = 'http://192.168.1.92:4567/update/address/'+id+'';
+    static async putUpdateAddress(pers){
+        const url = 'http://192.168.1.92:4567/update/address/'+pers.id+'';
         console.log(url);
 
         let create = {
-            home:homeA,
-            appartement:appartementA,
+            home:pers.home,
+            appartement:pers.appartement,
             street:{
-                streetname:streetName
+                streetname:pers.street
             }
         }
         var json = JSON.stringify(create);
         console.log(json);
 
-        const response = await axios.put(url)
+        const response = await axios.put(url,json);
         // для вытягивания
         return response.data;
     }
@@ -160,7 +160,8 @@ export default class PersonSevice{
     }
 
     static async putUpdateFIO(pers){
-        const url = 'http://192.168.1.92:4567/update/persone/'+pers.lastname+'/'+pers.firstname+'/'+pers.fathername+'/'+pers.id+'';
+        console.log(pers);
+        const url = 'http://192.168.1.92:4567/update/person/'+pers.lastname+'/'+pers.firstname+'/'+pers.fathername+'/'+pers.id+'';
         console.log(url);
 
 

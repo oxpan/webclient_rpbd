@@ -3,21 +3,33 @@ import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
 
 const ReadAddress = ({currenID,personList,readAddressPerson,removeAddress}) => {
+    console.log(personList);
+    let curstreet,curhome,curappartement;
+    if (personList[currenID].address === undefined){
+        curstreet = '';
+        curhome = '';
+        curappartement = '';
+    }else {
+        curstreet = personList[currenID].address.street.streetname;
+        curhome = personList[currenID].address.home;
+        curappartement = personList[currenID].address.appartement;
+    }
 
-
-
-    const [readAddress,setReadAddress] = useState({
-        street: personList[currenID].address.street.streetname,
-        home: personList[currenID].address.home,
-        appartement: personList[currenID].address.appartement
-    })
+    const [readAddress, setReadAddress] = useState({
+        street: curstreet,
+        home: curhome,
+        appartement:curappartement
+    });
+    console.log(readAddress);
 
     const readAddressPers = (e) => {
         e.preventDefault();
 
+        if (removeAddress.home === '' || removeAddress.appartement ==='' || removeAddress.street === '')return;
+
         const newPersAddress = {
             id:personList[currenID].id,
-            home:readAddress.home,
+            home:readAddress.home.trim(),
             street:readAddress.street,
             appartement:readAddress.appartement
         }

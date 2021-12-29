@@ -9,14 +9,16 @@ const ReadPersonFIO = ({currenID, personList,toChangeFIO}) => {
         father:personList[currenID].fathername
     })
 
+
     const readFIOPers = (e) => {
         e.preventDefault();
-        console.log(readeFIO.last);
+
+        if (readeFIO.last === '' || readeFIO.first === '' || readeFIO.father === '')return;
 
         const upPers = {
-            lastname:readeFIO.last,
-            firstname:readeFIO.first,
-            fathername:readeFIO.father,
+            lastname:readeFIO.last.trim(),
+            firstname:readeFIO.first.trim(),
+            fathername:readeFIO.father.trim(),
             id:personList[currenID].id
         }
 

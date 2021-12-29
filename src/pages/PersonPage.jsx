@@ -34,6 +34,18 @@ const PersonPage = () => {
         setPers(persone);
         console.log(persone);
     })
+    const [fetchPersonUpdate,isPersonUpdateLoading,personUpdateError] = useFetching(async (pers)=>{
+        const lperson = await PersonSevice.putUpdateFIO(pers)
+        console.log(pers);
+    })
+    const [fetchPersonUpdateAddress,isPersonUpdateAddressLoading,personUpdateAddressError] = useFetching(async (pers)=>{
+        const lperson = await PersonSevice.putUpdateAddress(pers);
+        console.log(pers);
+    })
+    const [fetchPersonDeleteAddress,isPersonDeleteAddressLoading,personDeleteAddressError] = useFetching(async (idAddress)=>{
+        const lperson = await PersonSevice.deleteAddress(idAddress);
+        console.log(pers);
+    })
 
     useEffect(()=>{
         fetchPersonById(params.id);
@@ -41,12 +53,15 @@ const PersonPage = () => {
 
     const updateAddress = (pers) => {
       console.log(pers);
+      fetchPersonUpdateAddress(pers);
     }
     const removeAddress = (idAddress) => {
       console.log(idAddress);
+      fetchPersonDeleteAddress(idAddress)
     }
     const updateFio = (pers) => {
       console.log(pers);
+      fetchPersonUpdate(pers);
     }
 
     return (
@@ -58,8 +73,10 @@ const PersonPage = () => {
             }
             <ReadPersonFIO personList={isPersonList} currenID={params.id - 1} toChangeFIO={updateFio}/>
             <ReadAddress personList={isPersonList} currenID={params.id - 1} readAddressPerson={updateAddress} removeAddress={removeAddress}/>
-            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1}/>
 
+
+
+            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1}/>
 
 
             <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
