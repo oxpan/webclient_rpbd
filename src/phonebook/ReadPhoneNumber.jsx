@@ -5,7 +5,7 @@ import Modal from "./UI/Modal/Modal";
 import PersonItem from "./PersonItem";
 import PhoneNumberItem from "./PhoneNumberItem";
 
-const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb}) => {
+const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNumb}) => {
     const [visebleAdd,setVisebleAdd] = useState(false);
     const [visebleUpdate,setVisebleUpdate] = useState(false);
     const [visebleDelete,setVisebleDelete] = useState(false);
@@ -57,7 +57,17 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb}) => {
         // console.log("URA");
         updatePhNumb(newNumber);
     }
+    const deletePhN = (e) => {
+        e.preventDefault();
 
+        if (parseInt(issNumber.inumber,10) > personList[currenID].phoneNumberSet.length)return;
+        var intNumm = parseInt(issNumber.inumber,10) -1;
+        const numbdel = {
+            id:personList[currenID].id,
+            pos:intNumm.toString()
+        }
+        deletePhNumb(numbdel);
+    }
 
     // console.log(personList[currenID].phoneNumberSet);
 
@@ -119,9 +129,11 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb}) => {
                 <Input
                     type={'text'}
                     placeholder={"Порядковый номер:"}
+                    value={issNumber.inumber}
+                    onChange={e => setNumber({...issNumber, inumber: e.target.value})}
                 />
                 <hr style={{margin:'15px 0'}}/>
-                <Button>Удалить</Button>
+                <Button onClick={deletePhN}>Удалить</Button>
             </Modal>
 
             <div>

@@ -63,8 +63,20 @@ const PersonPage = () => {
         // setPers([...pers.phoneNumberSet,newNumb]);
     })
     const [fetchPersonUpdatePhonN,isPersonUpdatePhonNLoading,personUpdatePhonNError] = useFetching(async (perslocal)=>{
-        console.log(perslocal);
+        // console.log(perslocal);
         const lperson = await PersonSevice.putUpdatePhone(perslocal);
+        console.log(lperson);
+        // const newNumb = {
+        //     number:perslocal.number,
+        //     phoneType:{
+        //         id:perslocal.type
+        //     }
+        // }
+        // setPers([...pers.phoneNumberSet,newNumb]);
+    })
+    const [fetchPersonDeletePhonN,isPersonDeletePhonNLoading,personDeletePhonNError] = useFetching(async (perslocal)=>{
+        // console.log(perslocal);
+        const lperson = await PersonSevice.deletePhone();
         console.log(lperson);
         // const newNumb = {
         //     number:perslocal.number,
@@ -102,6 +114,10 @@ const PersonPage = () => {
       console.log(numb);
       fetchPersonUpdatePhonN(numb)
     }
+    const deletePhonNumb = (idnum) => {
+      console.log(idnum);
+      fetchPersonDeletePhonN(idnum);
+    }
 
     return (
         <div>
@@ -118,7 +134,7 @@ const PersonPage = () => {
             {/*    ?*/}
             {/*        <div>НОМЕРОВ НЕТУ</div>*/}
             {/*        :*/}
-            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1} addPhNu={addPhone} updatePhNumb={updateNumber}/>
+            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1} addPhNu={addPhone} updatePhNumb={updateNumber} deletePhNumb={deletePhonNumb}/>
             {/*}*/}
             <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
                 <Button onClick={deletePerson}>❌</Button>
