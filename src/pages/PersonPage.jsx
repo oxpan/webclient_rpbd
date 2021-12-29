@@ -4,10 +4,16 @@ import {useFetching} from "../hooks/useFetching";
 import PersonSevice from "../API/PersonSevice";
 import Loader from "../phonebook/UI/Loader/Loader";
 import Button from "../phonebook/UI/button/Button";
+import ReadPersonFIO from "../phonebook/ReadPersonFIO";
+import ReadAddress from "../phonebook/ReadAddress";
+import ReadPhoneNumber from "../phonebook/ReadPhoneNumber";
+import Modal from "../phonebook/UI/Modal/Modal";
 
 const PersonPage = () => {
     const params = useParams();
     console.log(params);
+
+    const [visebleDel,setVisebleDel] = useState(false);
 
     const [pers,setPers] = useState({});
     const [fetchPersonById,isLoading,error] = useFetching(async (id) => {
@@ -32,20 +38,29 @@ const PersonPage = () => {
     return (
         <div>
 
-            <h1>Не жопа #{params.id}</h1>
+            <h1>Режим редактора</h1>
             {error &&
                 <div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>⛈</h1></div>
             }
-            {isLoading
-                ? <Loader/>
-                : <div>
-                    <div> {pers.lastname} {pers.firstname} {pers.fathername}</div>
-                    <div> {pers.street}  {pers.home} {pers.apartment}</div>
+            <ReadPersonFIO/>
+            <ReadAddress/>
+            <ReadPhoneNumber/>
 
-                    <Button>💾</Button>
-                    <Button>🗑</Button>
+
+
+            <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
+                <Button >❌</Button>
             </div>
-            }
+            {/*{isLoading*/}
+            {/*    ? <div style={{display:'flex',justifyContent:'center',marginTop:50}}><Loader/></div>*/}
+            {/*    : <div>*/}
+            {/*        <div> {pers.lastname} {pers.firstname} {pers.fathername}</div>*/}
+            {/*        <div> {pers.street}  {pers.home} {pers.apartment}</div>*/}
+
+            {/*        <Button>💾</Button>*/}
+            {/*        <Button>🗑</Button>*/}
+            {/*    </div>*/}
+            {/*}*/}
         </div>
     );
 };
