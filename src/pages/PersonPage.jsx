@@ -37,23 +37,35 @@ const PersonPage = () => {
     })
     const [fetchPersonUpdate,isPersonUpdateLoading,personUpdateError] = useFetching(async (pers)=>{
         const lperson = await PersonSevice.putUpdateFIO(pers)
-        console.log(pers);
+        console.log(lperson);
     })
     const [fetchPersonUpdateAddress,isPersonUpdateAddressLoading,personUpdateAddressError] = useFetching(async (pers)=>{
         const lperson = await PersonSevice.putUpdateAddress(pers);
-        console.log(pers);
+        console.log(lperson);
     })
     const [fetchPersonDeleteAddress,isPersonDeleteAddressLoading,personDeleteAddressError] = useFetching(async (idAddress)=>{
         const lperson = await PersonSevice.deleteAddress(idAddress);
-        console.log(pers);
+        console.log(lperson);
     })
     const [fetchPersonDelete,isPersonDeleteLoading,personDeleteError] = useFetching(async (id)=>{
         const lperson = await PersonSevice.deletePerson(id);
-        console.log(pers);
+        console.log(lperson);
     })
     const [fetchPersonAddPhonN,isPersonAddPhonNLoading,personAddPhonNError] = useFetching(async (perslocal)=>{
         const lperson = await PersonSevice.postAddPhone(perslocal);
+        console.log(lperson);
+        // const newNumb = {
+        //     number:perslocal.number,
+        //     phoneType:{
+        //         id:perslocal.type
+        //     }
+        // }
+        // setPers([...pers.phoneNumberSet,newNumb]);
+    })
+    const [fetchPersonUpdatePhonN,isPersonUpdatePhonNLoading,personUpdatePhonNError] = useFetching(async (perslocal)=>{
         console.log(perslocal);
+        const lperson = await PersonSevice.putUpdatePhone(perslocal);
+        console.log(lperson);
         // const newNumb = {
         //     number:perslocal.number,
         //     phoneType:{
@@ -86,6 +98,10 @@ const PersonPage = () => {
         console.log(pers);
         fetchPersonAddPhonN(pers);
     }
+    const updateNumber = (numb) => {
+      console.log(numb);
+      fetchPersonUpdatePhonN(numb)
+    }
 
     return (
         <div>
@@ -102,7 +118,7 @@ const PersonPage = () => {
             {/*    ?*/}
             {/*        <div>НОМЕРОВ НЕТУ</div>*/}
             {/*        :*/}
-            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1} addPhNu={addPhone}/>
+            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1} addPhNu={addPhone} updatePhNumb={updateNumber}/>
             {/*}*/}
             <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
                 <Button onClick={deletePerson}>❌</Button>

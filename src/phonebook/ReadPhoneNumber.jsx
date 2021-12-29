@@ -5,7 +5,7 @@ import Modal from "./UI/Modal/Modal";
 import PersonItem from "./PersonItem";
 import PhoneNumberItem from "./PhoneNumberItem";
 
-const ReadPhoneNumber = ({currenID, personList, addPhNu}) => {
+const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb}) => {
     const [visebleAdd,setVisebleAdd] = useState(false);
     const [visebleUpdate,setVisebleUpdate] = useState(false);
     const [visebleDelete,setVisebleDelete] = useState(false);
@@ -32,6 +32,30 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu}) => {
             type:issNumber.type
         }
         addPhNu(newNumber);
+    }
+    const updatePhN = (e) => {
+        e.preventDefault();
+        // console.log(personList[currenID].phoneNumberSet.length)
+        // console.log(parseInt(issNumber.inumber,10))
+        if (issNumber.type === '1'){}else if(issNumber.type === '2'){}else if(issNumber.type === '3'){}else return;
+
+        if (issNumber.numberphone[1] !== '(' ||
+            issNumber.numberphone[5] !== ')' ||
+            issNumber.numberphone[9] !== '-' ||
+            issNumber.numberphone[12] !== '-'||
+            issNumber.numberphone.length !== 15)return;
+
+        if (parseInt(issNumber.inumber,10) > personList[currenID].phoneNumberSet.length)return;
+
+        var intNumm = parseInt(issNumber.inumber,10) -1;
+        const newNumber = {
+            id:personList[currenID].id,
+            inumber:intNumm.toString(),
+            number:issNumber.numberphone,
+            type:issNumber.type
+        }
+        // console.log("URA");
+        updatePhNumb(newNumber);
     }
 
 
@@ -68,14 +92,18 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu}) => {
                     type={'text'}
                     placeholder={"Порядковый номер:"}
                     value={issNumber.inumber}
-                    onChange={e => setNumber({...issNumber, numberphone: e.target.value})}
+                    onChange={e => setNumber({...issNumber, inumber: e.target.value})}
                 />
+                <h4>1 - Мобильный</h4>
+                <h4>2 - Рабочий</h4>
+                <h4>3 - Домашний</h4>
                 <Input
                     type={'text'}
                     placeholder={"Тип:"}
                     value={issNumber.type}
                     onChange={e => setNumber({...issNumber, type: e.target.value})}
                 />
+                <h4>Формат ввода - X(XXX)XXX-XX-XX</h4>
                 <Input
                     type={'text'}
                     placeholder={"Номер:"}
@@ -83,7 +111,7 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu}) => {
                     onChange={e => setNumber({...issNumber, numberphone: e.target.value})}
                 />
                 <hr style={{margin:'15px 0'}}/>
-                <Button>Обновить</Button>
+                <Button onClick={updatePhN}>Обновить</Button>
             </Modal>
 
             <Modal style={{marginTop: 30}} visible={visebleDelete} setVisible={setVisebleDelete}>

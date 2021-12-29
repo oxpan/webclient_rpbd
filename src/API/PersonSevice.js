@@ -125,20 +125,21 @@ export default class PersonSevice{
         return response.data;
     }
 
-    static async putUpdatePhone(id,pos,number,type){
-        const url = 'http://192.168.1.92:4567/update/phone/'+id+'/'+pos+'';
+    static async putUpdatePhone(pers){
+        console.log(pers);
+        const url = 'http://192.168.1.92:4567/update/phone/'+pers.id+'/'+pers.inumber+'';
         console.log(url);
 
         let create = {
-            number:number,
+            number:pers.number,
             phoneType:{
-                id:type
+                id:pers.type
             }
         }
         var json = JSON.stringify(create);
         console.log(json);
 
-        const response = await axios.put(url)
+        const response = await axios.put(url,json);
         // для вытягивания
         return response.data;
     }
