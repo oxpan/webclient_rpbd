@@ -6,7 +6,7 @@ import {AutchContext} from "./context";
 const PersonList = ({persone,title,remove}) => {
     const {isPersonList,setPersonList} = useContext(AutchContext);
     setPersonList(persone);
-    console.log(isPersonList);
+    // console.log(isPersonList);
     if (!persone.length){
         return (
             <h1 style={{textAlign:'center'}}>

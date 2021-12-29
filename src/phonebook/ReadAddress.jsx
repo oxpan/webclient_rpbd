@@ -3,7 +3,7 @@ import Input from "./UI/input/Input";
 import Button from "./UI/button/Button";
 
 const ReadAddress = ({currenID,personList,readAddressPerson,removeAddress}) => {
-    console.log(personList);
+    // console.log(personList);
     let curstreet,curhome,curappartement;
     if (personList[currenID].address === undefined){
         curstreet = '';
@@ -20,7 +20,7 @@ const ReadAddress = ({currenID,personList,readAddressPerson,removeAddress}) => {
         home: curhome,
         appartement:curappartement
     });
-    console.log(readAddress);
+    // console.log(readAddress);
 
     const readAddressPers = (e) => {
         e.preventDefault();

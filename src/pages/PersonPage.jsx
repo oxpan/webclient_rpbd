@@ -12,9 +12,9 @@ import {AutchContext} from "../phonebook/context";
 
 const PersonPage = () => {
     const {isPersonList,setPersonList} = useContext(AutchContext);
-    console.log(isPersonList);
+    // console.log(isPersonList);
     const params = useParams();
-    console.log(params);
+    // console.log(params);
 
     const [visebleDel,setVisebleDel] = useState(false);
 
@@ -32,7 +32,7 @@ const PersonPage = () => {
         }
         // setPers(response.data);
         setPers(persone);
-        console.log(persone);
+        // console.log(persone);
     })
     const [fetchPersonUpdate,isPersonUpdateLoading,personUpdateError] = useFetching(async (pers)=>{
         const lperson = await PersonSevice.putUpdateFIO(pers)
@@ -52,7 +52,7 @@ const PersonPage = () => {
     },[])
 
     const updateAddress = (pers) => {
-      console.log(pers);
+      // console.log(pers);
       fetchPersonUpdateAddress(pers);
     }
     const removeAddress = (idAddress) => {
@@ -60,7 +60,7 @@ const PersonPage = () => {
       fetchPersonDeleteAddress(idAddress)
     }
     const updateFio = (pers) => {
-      console.log(pers);
+      // console.log(pers);
       fetchPersonUpdate(pers);
     }
 

@@ -10,7 +10,7 @@ const ReadPhoneNumber = ({currenID, personList, readPhoneNumberPerson}) => {
     const [visebleUpdate,setVisebleUpdate] = useState(false);
     const [visebleDelete,setVisebleDelete] = useState(false);
 
-    console.log(personList[currenID].phoneNumberSet);
+    // console.log(personList[currenID].phoneNumberSet);
 
     return (
         <div>
