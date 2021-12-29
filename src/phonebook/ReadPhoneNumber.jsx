@@ -9,8 +9,10 @@ const ReadPhoneNumber = ({currenID, personList, readPhoneNumberPerson}) => {
     const [visebleAdd,setVisebleAdd] = useState(false);
     const [visebleUpdate,setVisebleUpdate] = useState(false);
     const [visebleDelete,setVisebleDelete] = useState(false);
+    const [issNumber,setNumber] = useState({})
 
-    // console.log(personList[currenID].phoneNumberSet);
+
+    console.log(personList[currenID].phoneNumberSet);
 
     return (
         <div>
@@ -20,6 +22,7 @@ const ReadPhoneNumber = ({currenID, personList, readPhoneNumberPerson}) => {
                 <Input
                     type={'text'}
                     placeholder={"Тип:"}
+
                 />
                 <Input
                     type={'text'}
@@ -59,18 +62,33 @@ const ReadPhoneNumber = ({currenID, personList, readPhoneNumberPerson}) => {
 
             <div>
                 <Button onClick={()=>setVisebleAdd(true)}>➕</Button>
-                <Button onClick={()=>setVisebleUpdate(true)}>💾</Button>
-                <Button onClick={()=>setVisebleDelete(true)}>❌</Button>
+                {
+                    personList[currenID].phoneNumberSet !== undefined &&
+                    <Button onClick={()=>setVisebleUpdate(true)}>💾</Button>
+                }
+                {
+                    personList[currenID].phoneNumberSet !== undefined &&
+                    <Button onClick={()=>setVisebleDelete(true)}>❌</Button>
+                }
+
+
             </div>
 
             <span>список номеров</span>
-            <div>
-                {
-                    personList[currenID].phoneNumberSet.map((numba) =>
-                        <PhoneNumberItem numb={numba.number} phont={numba.phoneType} key={numba.phoneType.id}/>
-                    )
-                }
-            </div>
+            {
+                personList[currenID].phoneNumberSet === undefined
+                ?
+                    <div>НОМЕРОВ НЕТУ</div>
+                    :
+                    <ol>
+                        {
+                            personList[currenID].phoneNumberSet.map((numba) =>
+                                <PhoneNumberItem numb={numba.number} phont={numba.phoneType} key={numba.phoneType.id}/>
+                            )
+                        }
+                    </ol>
+            }
+
 
             <hr style={{margin:'15px 0'}}/>
         </div>

@@ -81,13 +81,13 @@ const PersonPage = () => {
             <ReadPersonFIO personList={isPersonList} currenID={params.id - 1} toChangeFIO={updateFio}/>
             <ReadAddress personList={isPersonList} currenID={params.id - 1} readAddressPerson={updateAddress} removeAddress={removeAddress}/>
 
-            {
-                isPersonList[params.id-1].phoneNumberSet === undefined
-                ?
-                    <div>НОМЕРОВ НЕТУ</div>
-                    :
-                    <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1}/>
-            }
+            {/*{*/}
+            {/*    isPersonList[params.id-1].phoneNumberSet === undefined*/}
+            {/*    ?*/}
+            {/*        <div>НОМЕРОВ НЕТУ</div>*/}
+            {/*        :*/}
+            <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1}/>
+            {/*}*/}
             <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
                 <Button onClick={deletePerson}>❌</Button>
             </div>

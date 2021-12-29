@@ -3,7 +3,7 @@ import React from 'react';
 const PhoneNumberItem = (props) => {
 
     return (
-        <div className={"phone"}>
+        <li className={"phone"}>
             {
                 props.phont.id === 1
                 ?
@@ -18,7 +18,7 @@ const PhoneNumberItem = (props) => {
                                 <span>мусорный - </span>
             }
             <span>{props.numb}</span>
-        </div>
+        </li>
     );
 };
 
