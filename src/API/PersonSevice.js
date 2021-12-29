@@ -158,4 +158,14 @@ export default class PersonSevice{
         // для вытягивания
         return response.data;
     }
+
+    static async putUpdateFIO(pers){
+        const url = 'http://192.168.1.92:4567/update/persone/'+pers.lastname+'/'+pers.firstname+'/'+pers.fathername+'/'+pers.id+'';
+        console.log(url);
+
+
+        const response = await axios.put(url)
+        // для вытягивания
+        return response.data;
+    }
 }

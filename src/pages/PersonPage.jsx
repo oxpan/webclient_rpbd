@@ -38,6 +38,17 @@ const PersonPage = () => {
     useEffect(()=>{
         fetchPersonById(params.id);
     },[])
+
+    const updateAddress = (pers) => {
+      console.log(pers);
+    }
+    const removeAddress = (idAddress) => {
+      console.log(idAddress);
+    }
+    const updateFio = (pers) => {
+      console.log(pers);
+    }
+
     return (
         <div>
 
@@ -45,8 +56,8 @@ const PersonPage = () => {
             {error &&
                 <div style={{display:'flex',justifyContent:'center',marginTop:50}}><h1>⛈</h1></div>
             }
-            <ReadPersonFIO personList={isPersonList} currenID={params.id - 1}/>
-            <ReadAddress personList={isPersonList} currenID={params.id - 1}/>
+            <ReadPersonFIO personList={isPersonList} currenID={params.id - 1} toChangeFIO={updateFio}/>
+            <ReadAddress personList={isPersonList} currenID={params.id - 1} readAddressPerson={updateAddress} removeAddress={removeAddress}/>
             <ReadPhoneNumber personList={isPersonList} currenID={params.id - 1}/>
 
 

@@ -12,6 +12,15 @@ const ReadPersonFIO = ({currenID, personList,toChangeFIO}) => {
     const readFIOPers = (e) => {
         e.preventDefault();
         console.log(readeFIO.last);
+
+        const upPers = {
+            lastname:readeFIO.last,
+            firstname:readeFIO.first,
+            fathername:readeFIO.father,
+            id:personList[currenID].id
+        }
+
+        toChangeFIO(upPers);
     }
 
     return (
