@@ -40,7 +40,14 @@ const ReadPhoneNumber = ({currenID, personList, addPhNu,updatePhNumb,deletePhNum
                 id:newNumber.type
             }
         }
-        setPers([...pers,newNumb]);
+        console.log(newNumb);
+        console.log(pers);
+        if (pers === undefined){
+            setPers([newNumb]);
+        }else {
+            setPers([...pers,newNumb]);
+        }
+
     }
     const updatePhN = (e) => {
         e.preventDefault();
